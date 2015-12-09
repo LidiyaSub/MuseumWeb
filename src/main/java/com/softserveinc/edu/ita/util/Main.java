@@ -10,6 +10,7 @@ import com.softserveinc.edu.ita.entity.Hall;
 import com.softserveinc.edu.ita.entity.Schedule;
 import com.softserveinc.edu.ita.entity.Showpiece;
 import com.softserveinc.edu.ita.entity.Worker;
+import com.softserveinc.edu.ita.init.InitSessionFactory;
 
 public class Main {
 
@@ -34,7 +35,7 @@ public class Main {
 		// System.out.println("---***---***---***----***---***---***----***---***---***----***---***---***----");
 		// Queries.eighthShowpiecesStatistics();
 
-		Session session = Asd.createSessionFactory().openSession();
+		Session session = InitSessionFactory.getSessionFactory().openSession();
 		session.beginTransaction();
 
 		session.getTransaction().commit();
