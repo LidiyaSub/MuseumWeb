@@ -2,34 +2,55 @@ package com.softserveinc.edu.ita.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Showpiece {
-	private int id;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@Column
 	private String nameShowpiece;
+
+	@Column
 	private Date dateIncome;
+
+	@Column
 	private String materials;
+
+	@Column
 	private String technics;
+
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Hall hall;
+
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Author author;
 
 	public Showpiece() {
 
 	}
 
-	public Showpiece(int id, String nameShowpiece, Date dateIncome,
-			String materials, String technics) {
-
-		this.id = id;
+	public Showpiece(String nameShowpiece, Date dateIncome, String materials, String technics) {
 		this.nameShowpiece = nameShowpiece;
 		this.dateIncome = dateIncome;
 		this.materials = materials;
 		this.technics = technics;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -83,10 +104,8 @@ public class Showpiece {
 
 	@Override
 	public String toString() {
-		return "Showpiece [id=" + id + ", nameShowpiece=" + nameShowpiece
-				+ ", dateIncome=" + dateIncome + ", materials=" + materials
-				+ ", technics=" + technics + ", hall=" + hall + ", author="
-				+ author + "]";
+		return "Showpiece [id=" + id + ", nameShowpiece=" + nameShowpiece + ", dateIncome=" + dateIncome
+				+ ", materials=" + materials + ", technics=" + technics + ", hall=" + hall + ", author=" + author + "]";
 	}
 
 }

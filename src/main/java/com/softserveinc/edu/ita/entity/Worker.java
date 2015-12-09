@@ -1,28 +1,52 @@
 package com.softserveinc.edu.ita.entity;
 
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+@Entity
 public class Worker {
 
-	private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@Column
 	private String nameWorker;
-	private int salary;
+
+	@Column
+	private Integer salary;
+
+	@Column
 	private String position;
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "Schedule_Worker", joinColumns = @JoinColumn(name = "Id_Worker"), inverseJoinColumns = @JoinColumn(name = "Id_Schedule"))
+	private List<Schedule> listOfSchedule;
 
 	public Worker() {
 
 	}
 
-	public Worker(int id, String nameWorker, int salary, String position) {
-		this.id = id;
+	public Worker(String nameWorker, Integer salary, String position) {
 		this.nameWorker = nameWorker;
 		this.salary = salary;
 		this.position = position;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -34,11 +58,11 @@ public class Worker {
 		this.nameWorker = nameWorker;
 	}
 
-	public int getSalary() {
+	public Integer getSalary() {
 		return salary;
 	}
 
-	public void setSalary(int salary) {
+	public void setSalary(Integer salary) {
 		this.salary = salary;
 	}
 
@@ -48,6 +72,14 @@ public class Worker {
 
 	public void setPosition(String position) {
 		this.position = position;
+	}
+
+	public List<Schedule> getListOfSchedule() {
+		return listOfSchedule;
+	}
+
+	public void setListOfSchedule(List<Schedule> listOfSchedule) {
+		this.listOfSchedule = listOfSchedule;
 	}
 
 	@Override
