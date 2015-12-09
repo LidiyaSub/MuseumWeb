@@ -1,16 +1,8 @@
 package com.softserveinc.edu.ita.util;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-
-import com.softserveinc.edu.ita.entity.Author;
-import com.softserveinc.edu.ita.entity.Excursion;
-import com.softserveinc.edu.ita.entity.Hall;
-import com.softserveinc.edu.ita.entity.Schedule;
-import com.softserveinc.edu.ita.entity.Showpiece;
+import com.softserveinc.edu.ita.dao.WorkerDao;
+import com.softserveinc.edu.ita.dao.impl.WorkerDaoImpl;
 import com.softserveinc.edu.ita.entity.Worker;
-import com.softserveinc.edu.ita.init.InitSessionFactory;
 
 public class Main {
 
@@ -35,11 +27,10 @@ public class Main {
 		// System.out.println("---***---***---***----***---***---***----***---***---***----***---***---***----");
 		// Queries.eighthShowpiecesStatistics();
 
-		Session session = InitSessionFactory.getSessionFactory().openSession();
-		session.beginTransaction();
+		Worker w = new Worker();
+		WorkerDao workerDao = new WorkerDaoImpl();
+		workerDao.save(w);
 
-		session.getTransaction().commit();
-		session.close();
 		System.exit(0);
 	}
 }

@@ -14,6 +14,7 @@ public class InitSessionFactory {
 
 	private static SessionFactory sessionFactory;
 
+	@SuppressWarnings("deprecation")
 	private static SessionFactory createSessionFactory() {
 		Configuration configuration = new Configuration().configure();
 		sessionFactory = configuration.addAnnotatedClass(Author.class).addAnnotatedClass(Excursion.class)

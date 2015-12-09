@@ -9,15 +9,13 @@ import org.hibernate.SessionFactory;
 import com.softserveinc.edu.ita.dao.GeneralDao;
 import com.softserveinc.edu.ita.init.InitSessionFactory;
 
-public abstract class GeneralDaoImpl<E, N extends Number> implements
-		GeneralDao<E, N> {
+public abstract class GeneralDaoImpl<E, N extends Number> implements GeneralDao<E, N> {
 
 	protected Class<E> entityClass;
 
 	@SuppressWarnings("unchecked")
 	public GeneralDaoImpl() {
-		entityClass = (Class<E>) ((ParameterizedType) getClass()
-				.getGenericSuperclass()).getActualTypeArguments()[0];
+		entityClass = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 	}
 
 	SessionFactory sessionFactory = InitSessionFactory.getSessionFactory();
@@ -70,7 +68,8 @@ public abstract class GeneralDaoImpl<E, N extends Number> implements
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		E entity;
-		entity = (E) session.createCriteria(entityClass).uniqueResult();
+		entity = (E) session.get(entityClass, id);
+		session.close();
 		return entity;
 	}
 
