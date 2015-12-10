@@ -11,14 +11,14 @@ import com.softserveinc.edu.ita.init.InitSessionFactory;
 
 public abstract class GeneralDaoImpl<E, N extends Number> implements GeneralDao<E, N> {
 
-	protected Class<E> entityClass;
+	private Class<E> entityClass;
 
 	@SuppressWarnings("unchecked")
 	public GeneralDaoImpl() {
 		entityClass = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 	}
 
-	SessionFactory sessionFactory = InitSessionFactory.getSessionFactory();
+	private SessionFactory sessionFactory = InitSessionFactory.getSessionFactory();
 
 	public void closeSessionFactory() {
 		if (sessionFactory != null)
@@ -47,8 +47,7 @@ public abstract class GeneralDaoImpl<E, N extends Number> implements GeneralDao<
 	public List<E> getAll() {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		List<E> entities;
-		entities = session.createCriteria(entityClass).list();
+		List<E> entities = session.createCriteria(entityClass).list();
 		session.getTransaction().commit();
 		session.close();
 		return entities;
@@ -67,8 +66,7 @@ public abstract class GeneralDaoImpl<E, N extends Number> implements GeneralDao<
 	public E findOneById(Number id) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		E entity;
-		entity = (E) session.get(entityClass, id);
+		E entity = (E) session.get(entityClass, id);
 		session.close();
 		return entity;
 	}
