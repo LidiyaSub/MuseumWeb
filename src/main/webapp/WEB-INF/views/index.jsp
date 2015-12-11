@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>Museum manager</h1>
+	<h2><a href="showAllAuthors">Show all authors</a></h2>
 </body>
 </html>
