@@ -5,20 +5,24 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.softserveinc.edu.ita.dao.GeneralDao;
 import com.softserveinc.edu.ita.init.InitSessionFactory;
 
-public abstract class GeneralDaoImpl<E, N extends Number> implements GeneralDao<E, N> {
+public abstract class GeneralDaoImpl<E, N extends Number> implements
+		GeneralDao<E, N> {
 
 	private Class<E> entityClass;
 
 	@SuppressWarnings("unchecked")
 	public GeneralDaoImpl() {
-		entityClass = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+		entityClass = (Class<E>) ((ParameterizedType) getClass()
+				.getGenericSuperclass()).getActualTypeArguments()[0];
 	}
 
-	private SessionFactory sessionFactory = InitSessionFactory.getSessionFactory();
+	@Autowired
+	private SessionFactory sessionFactory;
 
 	public void closeSessionFactory() {
 		if (sessionFactory != null)
