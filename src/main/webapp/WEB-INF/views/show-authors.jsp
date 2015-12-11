@@ -7,16 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>All authors</title>
 <style type="text/css">
-div{
-background-color: lightgreen;
+div {
+	background-color: lightgreen;
 }
 </style>
 </head>
 <body>
 	<c:if test="${param.message eq true}">
-		<div>
-			Author is added!<a href="">x</a>
-		</div>
+		<div>Author is added!</div>
 	</c:if>
 	<table border="1">
 

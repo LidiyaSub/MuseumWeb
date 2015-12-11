@@ -18,31 +18,20 @@
  http://www.springframework.org/schema/util
  http://www.springframework.org/schema/util/spring-util.xsd">
 
-
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
 		p:location="/WEB-INF/jdbc.properties" />
 
-	<bean id="dataSource"
-		class="org.apache.commons.dbcp.BasicDataSource"
-        destroy-method="close"
-		p:driverClassName="${jdbc.driverClassName}" 
-		p:url="${jdbc.databaseurl}"
-		p:username="${jdbc.username}"
-		p:password="${jdbc.password}" />
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close" p:driverClassName="${jdbc.driverClassName}"
+		p:url="${jdbc.databaseurl}" p:username="${jdbc.username}" p:password="${jdbc.password}" />
 
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<!-- 
-		<property name="configLocation">
-			<value>classpath:hibernate.cfg.xml</value>
-		</property>
-		 
-		<property name="configurationClass">
-			<value>org.hibernate.cfg.AnnotationConfiguration</value>
-		</property>
-		-->
+		<!-- <property name="configLocation"> <value>classpath:hibernate.cfg.xml</value> 
+			</property> <property name="configurationClass"> <value>org.hibernate.cfg.AnnotationConfiguration</value> 
+			</property> -->
 		<property name="annotatedClasses">
 			<list>
 				<value>com.softserveinc.edu.ita.entity.Author</value>
@@ -51,7 +40,7 @@
 				<value>com.softserveinc.edu.ita.entity.Schedule</value>
 				<value>com.softserveinc.edu.ita.entity.Showpiece</value>
 				<value>com.softserveinc.edu.ita.entity.Worker</value>
-				
+
 			</list>
 		</property>
 		<property name="hibernateProperties">
