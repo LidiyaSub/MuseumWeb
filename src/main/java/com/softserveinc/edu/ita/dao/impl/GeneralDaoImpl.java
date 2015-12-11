@@ -24,6 +24,11 @@ public abstract class GeneralDaoImpl<E, N extends Number> implements GeneralDao<
 		return entityClass;
 	}
 
+	public void closeSessionFactory() {
+		if (sessionFactory != null)
+			sessionFactory.close();
+	}
+
 	public void save(E entity) {
 		sessionFactory.getCurrentSession().save(entity);
 	}
