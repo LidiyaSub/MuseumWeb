@@ -9,5 +9,7 @@
 <body>
 	<h1>Museum manager</h1>
 	<h2><a href="showAllAuthors">Show all authors</a></h2>
+	<h2><a href="showAllWorkers">Show all workers</a></h2>
+	<h2><a href="showAllWorkers">Show all workers</a></h2>
 </body>
 </html>

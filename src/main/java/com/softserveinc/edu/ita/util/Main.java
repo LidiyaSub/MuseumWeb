@@ -1,5 +1,7 @@
 package com.softserveinc.edu.ita.util;
 
+import org.hibernate.Session;
+
 import com.softserveinc.edu.ita.dao.WorkerDao;
 import com.softserveinc.edu.ita.dao.impl.WorkerDaoImpl;
 import com.softserveinc.edu.ita.entity.Worker;
