@@ -27,13 +27,13 @@ public class AuthorController {
 	public String getAllAuthors(Model model) {
 		List<Author> authors = authorService.getAllAuthors();
 		model.addAttribute("allAuthors", authors);
-		return "show-authors";
+		return "author/show-authors";
 	}
 
 	@RequestMapping("/createAuthor")
 	public String addAuthor(Model model) {
 		model.addAttribute("author", new Author());
-		return "addNewAuthor";
+		return "author/addNewAuthor";
 	}
 
 	@RequestMapping(value = "/saveAuthor", method = RequestMethod.POST)
