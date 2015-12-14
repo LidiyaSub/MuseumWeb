@@ -11,5 +11,7 @@
 	<h2><a href="showAllAuthors">Show all authors</a></h2>
 	<h2><a href="showAllWorkers">Show all workers</a></h2>
 	<h2><a href="showAllWorkers">Show all workers</a></h2>
+	<h2><a href="showAllHalls">Show all halls</a></h2>
+	<h2><a href="showAllExcursions">Show all excursion</a></h2>
 </body>
 </html>

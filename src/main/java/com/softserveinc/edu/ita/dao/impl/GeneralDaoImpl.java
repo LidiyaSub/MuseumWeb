@@ -13,7 +13,7 @@ public abstract class GeneralDaoImpl<E, N extends Number> implements GeneralDao<
 	private Class<E> entityClass;
 
 	@Autowired
-	private SessionFactory sessionFactory;
+	protected SessionFactory sessionFactory;
 
 	@SuppressWarnings("unchecked")
 	public GeneralDaoImpl() {

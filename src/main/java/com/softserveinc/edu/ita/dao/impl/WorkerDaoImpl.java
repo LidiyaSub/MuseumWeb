@@ -6,6 +6,7 @@ import com.softserveinc.edu.ita.dao.WorkerDao;
 import com.softserveinc.edu.ita.entity.Worker;
 
 @Repository
-public class WorkerDaoImpl extends GeneralDaoImpl<Worker, Long> implements WorkerDao {
+public class WorkerDaoImpl extends GeneralDaoImpl<Worker, Long> implements
+		WorkerDao {
 
 }

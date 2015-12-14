@@ -1,10 +1,12 @@
 package com.softserveinc.edu.ita.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 
 import com.softserveinc.edu.ita.dao.WorkerDao;
 import com.softserveinc.edu.ita.entity.Worker;
@@ -44,6 +46,18 @@ public class WorkerServiceImpl implements WorkerService {
 	@Override
 	public Worker findOneById(Long id) {
 		return dao.findOneById(id);
+	}
+
+	@Transactional
+	@Override
+	public void collectionDefaultModel(Model model) {
+		List<String> workers = new ArrayList<String>();
+		List<Worker> list = dao.getAll();
+		for (int i = 0; i < list.size(); i++) {
+			workers.add(list.get(i).getNameWorker());
+		}
+		model.addAttribute("listNameWorkers", workers);
+		
 	}
 
 }

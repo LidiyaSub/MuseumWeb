@@ -21,10 +21,10 @@ public class Hall {
 	@Column
 	private String nameHall;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "hall")
+	@OneToMany(mappedBy = "hall", fetch= FetchType.EAGER)
 	private List<Showpiece> showpiece;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Worker worker;
 
 	public Hall() {

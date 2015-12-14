@@ -29,10 +29,10 @@ public class Showpiece {
 	@Column
 	private String technics;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Hall hall;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Author author;
 
 	public Showpiece() {

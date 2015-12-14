@@ -10,7 +10,7 @@
 <body>
 	<sf:form action="saveAuthor" method="POST" modelAttribute="author">
 		<label for="name">Name</label>
-		<sf:input path="nameAuthor" class="smoothborder" id="name" />
+		<sf:input path="nameAuthor" id="name" />
 		<input name="commit" type="submit" value="Add"/>
 	</sf:form>
 </body>
