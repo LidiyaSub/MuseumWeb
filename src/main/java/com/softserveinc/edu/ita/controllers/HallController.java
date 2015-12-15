@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +35,7 @@ public class HallController {
 	public String showHalls(Model model){
 		model.addAttribute("allHalls", hallService.getAllHalls());
 		model.addAttribute("allShowpieces", showpieceService.getAllShowpieces());
+		model.addAttribute("allWorkers", workerService.getAllWorkers());
 		return "hall/show-halls";
 	}
 	

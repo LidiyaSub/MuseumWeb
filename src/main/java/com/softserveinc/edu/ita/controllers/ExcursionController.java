@@ -28,7 +28,7 @@ public class ExcursionController {
 	public String showAll(Model model) {
 		List<Excursion> allExcursions = excursionService.getAllExcursions();
 		model.addAttribute("allExcursions", allExcursions);
-		model.addAttribute("scheduleInfo", scheduleService.getAllSchedules());
+		model.addAttribute("allSchedules", scheduleService.getAllSchedules());
 		return "excursion/show-excursions";
 	}
 

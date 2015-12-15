@@ -58,7 +58,7 @@
 		</tr>
 		<c:forEach items="${schedules}" var="schedule1">
 			<tr>
-				<td>${schedule1.dateTime}</td>
+				<td>${schedule1.dateTimeSchedule}</td>
 				<td><a href="${pageContext.request.contextPath}/deleteSchedule/${schedule1.id}">delete</a></td>
 				<td><a href="${pageContext.request.contextPath}/editSchedule/${schedule1.id}">edit</a></td>
 			</tr>
@@ -70,7 +70,7 @@
 
 	<form:form action="saveSchedule" method="POST" modelAttribute="schedule" >
 		<label>Date</label><br>
-		<form:input path="dateTime" id="datepicker" />
+		<form:input path="dateTimeSchedule" id="datepicker" />
 		<input name="commit" type="submit" value="Add new schedule" />
 	</form:form>
 

@@ -35,14 +35,15 @@ div {
 		</tr>
 
 		<c:forEach items="${allExcursions}" var="excursion">
-			<tr>
-				<td>${excursion.nameExcursion}</td>
-				<td>${excursion.duration}</td>
-				<td>
-				${excursion.listOfSchedule.id}
-				</td>
-				<td><a href="updateExcursion-${excursion.id}">Update</a> | <a href="deleteExcursion-${excursion.id}">Delete</a></td>
-			</tr>
+				<tr>
+					<td>${excursion.nameExcursion}</td>
+					<td>${excursion.duration}</td>
+<%-- 			<c:forEach items="${allSchedules}" var="schedule"> --%>
+<%-- 					<td><c:if test="${excursion.id eq schedule.id}">${schedule.dateTimeSchedule}</c:if></td> --%>
+<%-- 			</c:forEach> --%>
+					<td><a href="updateExcursion-${excursion.id}">Update</a> | <a
+						href="deleteExcursion-${excursion.id}">Delete</a></td>
+				</tr>
 		</c:forEach>
 
 	</table>
