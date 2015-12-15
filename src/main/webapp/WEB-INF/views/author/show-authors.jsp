@@ -16,14 +16,22 @@ div {
 	<c:if test="${param.message eq true}">
 		<div>Author is added!</div>
 	</c:if>
+	<c:if test="${param.msg eq true}">
+		<div>Author is updated!</div>
+	</c:if>
+	<c:if test="${param.notify eq true}">
+		<div>Author is deleted!</div>
+	</c:if>
 	<table border="1">
 
 		<tr>
 			<th>Name and Surname</th>
+			<th>Action</th>
 		</tr>
 		<c:forEach items="${allAuthors}" var="author">
 			<tr>
 				<td>${author.nameAuthor}</td>
+				<td><a href="updateAuthor-${author.id}">Update</a> | <a href="deleteAuthor-${author.id}">Delete</a></td>
 			</tr>
 		</c:forEach>
 

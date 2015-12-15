@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 
 import com.softserveinc.edu.ita.dao.ShowpieceDao;
 import com.softserveinc.edu.ita.entity.Showpiece;
@@ -44,6 +45,12 @@ public class ShowpieceServiceImpl implements ShowpieceService {
 	@Override
 	public Showpiece findOneById(Long id) {
 		return dao.findOneById(id);
+	}
+
+	@Override
+	public void collectionDefaultModel(Model model) {
+		dao.collectionDefaultModel(model);
+		
 	}
 
 }
