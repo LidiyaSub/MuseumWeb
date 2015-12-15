@@ -7,8 +7,27 @@
 <html>
 <head>
 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
-<c:import url="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.8.8/jquery.timepicker.min.css"/>
+<
+c
+:import
+ 
+url
+="https
+:
+//cdnjs
+.cloudflare
+.com
+/ajax/libs/jquery-timepicker/1
+.8
+.8
+/jquery
+.timepicker
+.min
+.css
+"/
+>
 </style>
 
 <script type="text/javascript">
@@ -27,13 +46,19 @@
 <c:import url="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.8.8/jquery.timepicker.min.js"/>
 </script>
 
-<script>
+<script type="text/javascript">
   $(document).ready(function() {
     $('#datepicker').datepicker();
-    $("#datepicker").keypress(function(event) {event.preventDefault();});
-  });
-  </script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    $("#datepicker").keypress(function(event) {event.preventDefault()});
+				var submit = $("#delete"), cbs = $('input[name="checkbox"]')
+						.click(
+								function() {
+									submit.removeAttr('disabled',
+											cbs.is(":checked")).attr(
+											'disabled', !cbs.is(":checked"));
+								});
+			});
+</script>
 <title>Schedule</title>
 </head>
 <body>
@@ -52,24 +77,32 @@
 	</c:if>
 
 	<h1>Schedule</h1>
+	
+	<form action="deleteSchedule">
 	<table border="1">
 		<tr>
 			<th>Date and Time</th>
+			<th>Delete</th>
+			<th>Edit</th>
 		</tr>
 		<c:forEach items="${schedules}" var="schedule1">
 			<tr>
 				<td>${schedule1.dateTimeSchedule}</td>
-				<td><a href="${pageContext.request.contextPath}/deleteSchedule/${schedule1.id}">delete</a></td>
-				<td><a href="${pageContext.request.contextPath}/editSchedule/${schedule1.id}">edit</a></td>
+				<td><input type="checkbox" name="checkbox" value="${schedule1.id}"></td>
+				<td><a
+					href="${pageContext.request.contextPath}/editSchedule/${schedule1.id}">edit</a></td>
 			</tr>
 		</c:forEach>
 
 	</table>
-	<br>
+	<br> <input type="submit" value="delete" id="delete" disabled />
+	</form>
 	<br>
 
-	<form:form action="saveSchedule" method="POST" modelAttribute="schedule" >
-		<label>Date</label><br>
+	<form:form action="saveSchedule" method="POST"
+		modelAttribute="schedule">
+		<label>Date</label>
+		<br>
 		<form:input path="dateTimeSchedule" id="datepicker" />
 		<input name="commit" type="submit" value="Add new schedule" />
 	</form:form>

@@ -11,6 +11,20 @@ div {
 	background-color: lightgreen;
 }
 </style>
+
+<script type="text/javascript">
+	<c:import url="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"/>
+</script>
+
+<script type="text/javascript">
+	$(document).ready(
+			function() {
+				var submit = $("#delete"), cbs = $('input[name="checkbox"]')
+						.click(function() {
+							submit.removeAttr('disabled', cbs.is(":checked")).attr('disabled', !cbs.is(":checked"));
+						});
+			});
+</script>
 </head>
 <body>
 
@@ -26,20 +40,26 @@ div {
 	<c:if test="${param.notify eq true}">
 		<div>Author is deleted!</div>
 	</c:if>
+	
+	<form action="deleteAuthor">
 	<table border="1">
 
 		<tr>
 			<th>Name and Surname</th>
-			<th>Action</th>
+			<th>Delete</th>
+			<th>Edit</th>
 		</tr>
 		<c:forEach items="${allAuthors}" var="author">
 			<tr>
 				<td>${author.nameAuthor}</td>
-				<td><a href="updateAuthor-${author.id}">Update</a> | <a href="deleteAuthor-${author.id}">Delete</a></td>
+				<td><input type="checkbox" name="checkbox"
+						value="${author.id}"></td>
+				<td><a href="updateAuthor-${author.id}">Update</a></td>
 			</tr>
 		</c:forEach>
-
 	</table>
+	<br> <input type="submit" value="delete" id="delete" disabled />
+	</form>
 	<a href="createAuthor">Add Author</a>
 </body>
 </html>
