@@ -24,7 +24,7 @@ public class ExcursionController {
 	@Autowired
 	ScheduleService scheduleService;
 
-	@RequestMapping("/showAllExcursions")
+	@RequestMapping(value = "/showAllExcursions", method = RequestMethod.GET)
 	public String showAll(Model model) {
 		List<Excursion> allExcursions = excursionService.getAllExcursions();
 		model.addAttribute("allExcursions", allExcursions);
@@ -32,7 +32,7 @@ public class ExcursionController {
 		return "excursion/show-excursions";
 	}
 
-	@RequestMapping("/addNewExcursion")
+	@RequestMapping(value = "/addNewExcursion", method = RequestMethod.GET)
 	public String addNew(Model model) {
 		model.addAttribute("excursion", new Excursion());
 		model.addAttribute("scheduleList", scheduleService.getAllSchedules());
@@ -46,7 +46,7 @@ public class ExcursionController {
 
 	}
 
-	@RequestMapping("/updateExcursion-{id}")
+	@RequestMapping(value = "/updateExcursion-{id}", method = RequestMethod.GET)
 	public String updateExcursionById(@PathVariable Long id, Model model) {
 		Excursion excursion = excursionService.findOneById(id);
 		model.addAttribute("excursion", excursion);
@@ -61,7 +61,7 @@ public class ExcursionController {
 		return "redirect:/showAllExcursions?notify=true";
 	}
 
-	@RequestMapping("/deleteExcursion-{id}")
+	@RequestMapping(value = "/deleteExcursion-{id}", method = RequestMethod.GET)
 	public String deleteExcursion(@PathVariable Long id, Model model) {
 		excursionService.deleteExcursion(id);
 		return "redirect:/showAllExcursions?message=true";

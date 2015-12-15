@@ -22,19 +22,19 @@ public class AuthorController {
 	@Autowired
 	private ShowpieceService showpieceService;
 
-	@RequestMapping(value = "/")
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String showInitialPage() {
 		return "index";
 	}
 
-	@RequestMapping("/showAllAuthors")
+	@RequestMapping(value = "/showAllAuthors", method = RequestMethod.GET)
 	public String getAllAuthors(Model model) {
 		List<Author> authors = authorService.getAllAuthors();
 		model.addAttribute("allAuthors", authors);
 		return "author/show-authors";
 	}
 
-	@RequestMapping("/createAuthor")
+	@RequestMapping(value = "/createAuthor", method = RequestMethod.GET)
 	public String addAuthor(Model model) {
 		model.addAttribute("author", new Author());
 		return "author/addNewAuthor";
@@ -46,11 +46,11 @@ public class AuthorController {
 		return "redirect:/showAllAuthors?message=true";
 	}
 
-	@RequestMapping("/updateAuthor-{id}")
+	@RequestMapping(value = "/updateAuthor-{id}", method = RequestMethod.GET)
 	public String updateAuthor(@PathVariable("id") Long id, Model model) {
 		Author author = authorService.findOneById(id);
 		model.addAttribute("authorInfo", author);
-		return "showAuthorPerUpdate";
+		return "author/showAuthorPerUpdate";
 
 	}
 
@@ -60,7 +60,7 @@ public class AuthorController {
 		return "redirect:/showAllAuthors?msg=true";
 	}
 	
-	@RequestMapping("/deleteAuthor-{id}")
+	@RequestMapping(value = "/deleteAuthor-{id}", method = RequestMethod.GET)
 	public String deleteAuthor(@PathVariable("id") Long id){
 		Author author = authorService.findOneById(id);
 		authorService.deleteAuthor(id);

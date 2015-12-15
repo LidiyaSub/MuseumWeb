@@ -31,7 +31,7 @@ public class HallController {
 	@Autowired
 	private ShowpieceService showpieceService;
 	
-	@RequestMapping("/showAllHalls")
+	@RequestMapping(value = "/showAllHalls", method = RequestMethod.GET)
 	public String showHalls(Model model){
 		model.addAttribute("allHalls", hallService.getAllHalls());
 		model.addAttribute("allShowpieces", showpieceService.getAllShowpieces());
@@ -39,7 +39,7 @@ public class HallController {
 		return "hall/show-halls";
 	}
 	
-	@RequestMapping("/addHall")
+	@RequestMapping(value = "/addHall", method = RequestMethod.GET)
 	public String addNewHall(Model model){
 		
 		model.addAttribute("workers", workerService.getAllWorkers());
@@ -74,7 +74,7 @@ public class HallController {
 		
 	}
 	
-	@RequestMapping(value="/updateHall-{id}")
+	@RequestMapping(value="/updateHall-{id}", method = RequestMethod.GET)
 	public String updateHall(@PathVariable("id") Long id, Model model){
 		Hall hall = hallService.findOneById(id);
 		model.addAttribute("hallInfo", hall);
@@ -90,7 +90,7 @@ public class HallController {
 		return "redirect:/showAllHalls?msg=true";
 	}
 	
-	@RequestMapping("/deleteHall-{id}")
+	@RequestMapping(value = "/deleteHall-{id}", method = RequestMethod.GET)
 	public String deleteHall(@PathVariable("id") Long id){
 		Hall hall = hallService.findOneById(id);
 		hallService.deleteHall(id);
