@@ -14,13 +14,17 @@
 	</div>
 
 	<h1>Schedule</h1>
-	<form:form action="assignWorkerToSchedule" method="POST" modelAttribute="workerSchedule">
-		<form:select multiple="false" path="worker">
-			<form:options items="${workers}" itemValue="nameWorker"	itemLabel="nameWorker" />
-		</form:select>
-		<form:select multiple="false" path="schedule">
-			<form:options items="${schedules}" itemValue="day" itemLabel="day" />
-		</form:select>
+	<form:form action="assignWorkerToSchedule" method="POST">
+		<select name="workerName">
+			<c:forEach items="${workers}" var="worker">
+				<option value="${worker.id}" label="${worker.nameWorker}" />
+			</c:forEach>
+		</select>
+		<select name="scheduleName" multiple="multiple" size="3">
+			<c:forEach items="${schedules}" var="schedule">
+				<option value="${schedule.id}" label="${schedule.dateTimeSchedule}" />
+			</c:forEach>
+		</select>
 		<br>
 		<input type="submit" value="Submit">
 	</form:form>

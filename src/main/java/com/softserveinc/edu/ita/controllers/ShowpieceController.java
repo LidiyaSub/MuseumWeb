@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.softserveinc.edu.ita.entity.Showpiece;
+import com.softserveinc.edu.ita.service.AuthorService;
+import com.softserveinc.edu.ita.service.HallService;
 import com.softserveinc.edu.ita.service.ShowpieceService;
 
 @Controller
@@ -15,10 +17,19 @@ public class ShowpieceController {
 
 	@Autowired
 	private ShowpieceService showpieceService;
+	
+	@Autowired
+	private AuthorService authorService;
+	
+	@Autowired
+	private HallService hallService;
 
 	@RequestMapping("/showAllShowpieces")
 	public String showAllShowpieces(Model model) {
-		return "showpiece/allShowpieces";
+		model.addAttribute("showpieces", showpieceService.getAllShowpieces());
+		model.addAttribute("authors", authorService.getAllAuthors());
+		model.addAttribute("halls", hallService.getAllHalls());
+		return "showpiece/show-showpieces";
 	}
 
 	@RequestMapping("/createShowpiece")

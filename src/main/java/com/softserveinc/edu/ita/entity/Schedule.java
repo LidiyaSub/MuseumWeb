@@ -21,13 +21,13 @@ public class Schedule {
 	private Long id;
 
 	@Column
-	private String dateTime;
+	private String dateTimeSchedule;
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(name = "Schedule_Worker", joinColumns = @JoinColumn(name = "Id_Schedule"), inverseJoinColumns = @JoinColumn(name = "Id_Worker"))
 	private List<Worker> worker;
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(name = "Excursion_Schedule", joinColumns = @JoinColumn(name = "Id_Schedule"), inverseJoinColumns = @JoinColumn(name = "Id_Excursion"))
 	private List<Excursion> listOfExcursion;
 
@@ -35,8 +35,8 @@ public class Schedule {
 
 	}
 
-	public Schedule(String dateTime) {
-		this.dateTime = dateTime;
+	public Schedule(String dateTimeSchedule) {
+		this.dateTimeSchedule = dateTimeSchedule;
 	}
 
 	public Long getId() {
@@ -47,12 +47,12 @@ public class Schedule {
 		this.id = id;
 	}
 
-	public String getDay() {
-		return dateTime;
+	public String getDateTimeSchedule() {
+		return dateTimeSchedule;
 	}
 
-	public void setDay(String dateTime) {
-		this.dateTime = dateTime;
+	public void setDateTimeSchedule(String dateTimeSchedule) {
+		this.dateTimeSchedule = dateTimeSchedule;
 	}
 
 	public List<Worker> getWorker() {

@@ -31,25 +31,27 @@ div {
 	</c:if>
 
 	<h1>Worker</h1>
-	<table border="1">
-		<tr>
-			<th>Name</th>
-			<th>Position</th>
-			<th>Salary</th>
-		</tr>
-		<c:forEach items="${workers}" var="worker">
+	<form action="deleteWorker">
+		<table border="1">
 			<tr>
-				<td>${worker.nameWorker}</td>
-				<td>${worker.position}</td>
-				<td>${worker.salary}</td>
-				<td><a
-					href="${pageContext.request.contextPath}/deleteWorker/${worker.id}">delete</a></td>
-				<td><a
-					href="${pageContext.request.contextPath}/editWorker/${worker.id}">edit</a></td>
+				<th>Name</th>
+				<th>Position</th>
+				<th>Salary</th>
 			</tr>
-		</c:forEach>
-
-	</table>
+			<c:forEach items="${workers}" var="worker">
+				<tr>
+					<td>${worker.nameWorker}</td>
+					<td>${worker.position}</td>
+					<td>${worker.salary}</td>
+					<td><input type="checkbox" name="checkbox"
+						value="${worker.id}"></td>
+					<td><a
+						href="${pageContext.request.contextPath}/editWorker/${worker.id}">edit</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+		<input type="submit" value="delete" />
+	</form>
 	<br>
 	<br>
 
