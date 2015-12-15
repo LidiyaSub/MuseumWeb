@@ -8,11 +8,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Workers</title>
 
+
 <style type="text/css">
 div {
 	background-color: lightgreen;
 }
 </style>
+
+<script type="text/javascript">
+	<c:import url="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"/>
+</script>
+
+<script type="text/javascript">
+	$(document).ready(
+			function() {
+				var submit = $("#delete"), cbs = $('input[name="checkbox"]')
+						.click(function() {
+							submit.removeAttr('disabled', cbs.is(":checked")).attr('disabled', !cbs.is(":checked"));
+						});
+			});
+</script>
+
+
 </head>
 <body>
 
@@ -50,7 +67,7 @@ div {
 				</tr>
 			</c:forEach>
 		</table>
-		<input type="submit" value="delete" />
+		<br> <input type="submit" value="delete" id="delete" disabled />
 	</form>
 	<br>
 	<br>
@@ -68,7 +85,7 @@ div {
 		<br>
 		<form:input path="salary" id="salary" />
 		<br>
-		<input name="commit" type="submit" value="Add worker" />
+		<input type="submit" name="commit" value="Add worker" />
 	</form:form>
 
 </body>

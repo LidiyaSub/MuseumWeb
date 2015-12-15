@@ -11,13 +11,30 @@ div {
 	background-color: lightgreen;
 }
 </style>
+
+<script type="text/javascript">
+	<c:import url="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"/>
+</script>
+
+<script type="text/javascript">
+	$(document).ready(
+			function() {
+				var submit = $("#delete"), cbs = $('input[name="checkbox"]')
+						.click(
+								function() {
+									submit.removeAttr('disabled',
+											cbs.is(":checked")).attr(
+											'disabled', !cbs.is(":checked"));
+								});
+			});
+</script>
 </head>
 <body>
 
 	<div>
 		<a href="/">Main menu</a>
 	</div>
-<c:if test="${param.message eq true}">
+	<c:if test="${param.message eq true}">
 		<div>Hall is added!</div>
 	</c:if>
 	<c:if test="${param.msg eq true}">
@@ -26,28 +43,36 @@ div {
 	<c:if test="${param.notify eq true}">
 		<div>Hall is deleted!</div>
 	</c:if>
-	<table border="1">
-		<tr>
-			<th>Hall name</th>
-			<th>Responsible for the hall</th>
-			<th>Showpieces</th>
-			<th>Update/Delete</th>
-		</tr>
-		
-		<c:forEach items="${allHalls}" var="hall">
+
+	<form action="deleteHall">
+		<table border="1">
 			<tr>
-			<td>${hall.nameHall}</td> 
-			<td>${hall.worker.nameWorker}</td>
-			<td>
-				<c:forEach items="${allShowpieces}" var="showpiece">
-					<c:if test="${showpiece.hall.id eq hall.id}"><li>${showpiece.nameShowpiece}</li></c:if>
-				</c:forEach>
-			</td>
-			<td><a href="updateHall-${hall.id}">Update</a> | <a href="deleteHall-${hall.id}">Delete</a></td>
+				<th>Hall name</th>
+				<th>Responsible for the hall</th>
+				<th>Showpieces</th>
+				<th>Delete</th>
+				<th>Update</th>
 			</tr>
-		</c:forEach>
-		
-	</table>
-	<h2><a href="addHall">Add new HALL</a></h2>
+
+			<c:forEach items="${allHalls}" var="hall">
+				<tr>
+					<td>${hall.nameHall}</td>
+					<td>${hall.worker.nameWorker}</td>
+					<td><c:forEach items="${allShowpieces}" var="showpiece">
+							<c:if test="${showpiece.hall.id eq hall.id}">
+								<li>${showpiece.nameShowpiece}</li>
+							</c:if>
+						</c:forEach></td>
+					<td><input type="checkbox" name="checkbox" value="${hall.id}"></td>
+					<td><a href="updateHall-${hall.id}">Update</a></td>
+				</tr>
+			</c:forEach>
+
+		</table>
+		<br> <input type="submit" value="delete" id="delete" disabled />
+	</form>
+	<h2>
+		<a href="addHall">Add new HALL</a>
+	</h2>
 </body>
 </html>
