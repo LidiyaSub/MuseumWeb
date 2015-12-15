@@ -2,6 +2,7 @@ package com.softserveinc.edu.ita.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Worker {
@@ -28,9 +30,12 @@ public class Worker {
 	@Column
 	private String position;
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "Schedule_Worker", joinColumns = @JoinColumn(name = "Id_Worker"), inverseJoinColumns = @JoinColumn(name = "Id_Schedule"))
 	private List<Schedule> listOfSchedule;
+
+	@OneToMany(mappedBy = "worker", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Hall> hall;
 
 	public Worker() {
 

@@ -26,30 +26,30 @@ public class ScheduleController {
 	public String showAllSchedules(Model model) {
 		model.addAttribute("schedules", scheduleService.getAllSchedules());
 		model.addAttribute("schedule", new Schedule());
-		return "schedule/allSchedules";
+		return "schedule/show-schedules";
 	}
 
 	@RequestMapping(value = "/saveSchedule", method = RequestMethod.POST)
 	public String saveSchedule(@ModelAttribute ("schedule") Schedule schedule) {
 		scheduleService.saveSchedule(schedule);
-		return "redirect:/showAllSchedules?message=true";
+		return "redirect:/show-schedules?message=true";
 	}
 	
 	@RequestMapping("/deleteSchedule/{id}")
 	public String deleteSchedule(@PathVariable("id") Long id) {
 		scheduleService.deleteSchedule(id);
-		return "redirect:/showAllSchedules?delete=true";
+		return "redirect:/show-schedules?delete=true";
 	}
 
 	@RequestMapping("/editSchedule/{id}")
 	public String editSchedule(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("schedule", scheduleService.findOneById(id));
-		return "schedule/editSchedule";
+		return "schedule/showSchedulePerUpdate";
 	}
 	
 	@RequestMapping(value = "/editSchedule/{id}", method = RequestMethod.POST)
 	public String editSchedule(@ModelAttribute("schedule") Schedule schedule) {
 		scheduleService.updateSchedule(schedule);
-		return "redirect:/showAllSchedules?edit=true";
+		return "redirect:/show-schedules?edit=true";
 	}
 }

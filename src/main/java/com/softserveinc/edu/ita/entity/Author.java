@@ -2,8 +2,10 @@ package com.softserveinc.edu.ita.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,11 +17,11 @@ public class Author {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column
 	private String nameAuthor;
-	
-	@OneToMany(mappedBy = "author")
+
+	@OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Showpiece> listOfShowpiece;
 
 	public Author() {
