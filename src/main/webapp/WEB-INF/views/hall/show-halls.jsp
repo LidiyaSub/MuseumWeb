@@ -13,14 +13,18 @@ div {
 </style>
 </head>
 <body>
+
+	<div>
+		<a href="/">Main menu</a>
+	</div>
 <c:if test="${param.message eq true}">
-		<div>Author is added!</div>
+		<div>Hall is added!</div>
 	</c:if>
 	<c:if test="${param.msg eq true}">
-		<div>Author is updated!</div>
+		<div>Hall is updated!</div>
 	</c:if>
 	<c:if test="${param.notify eq true}">
-		<div>Author is deleted!</div>
+		<div>Hall is deleted!</div>
 	</c:if>
 	<table border="1">
 		<tr>
@@ -35,8 +39,8 @@ div {
 			<td>${hall.nameHall}</td> 
 			<td>${hall.worker.nameWorker}</td>
 			<td>
-				<c:forEach items="${hall.showpiece}" var="item">
-					<li>${item.nameShowpiece}</li>
+				<c:forEach items="${allShowpieces}" var="showpiece">
+					<c:if test="${showpiece.hall.id eq hall.id}"><li>${showpiece.nameShowpiece}</li></c:if>
 				</c:forEach>
 			</td>
 			<td><a href="updateHall-${hall.id}">Update</a> | <a href="deleteHall-${hall.id}">Delete</a></td>

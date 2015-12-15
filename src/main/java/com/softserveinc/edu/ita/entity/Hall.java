@@ -21,7 +21,7 @@ public class Hall {
 	@Column
 	private String nameHall;
 
-	@OneToMany(mappedBy = "hall", fetch= FetchType.EAGER)
+	@OneToMany(mappedBy = "hall", fetch= FetchType.LAZY)
 	private List<Showpiece> showpiece;
 
 	@ManyToOne
