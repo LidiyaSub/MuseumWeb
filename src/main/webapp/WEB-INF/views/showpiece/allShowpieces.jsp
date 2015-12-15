@@ -8,5 +8,9 @@
 </head>
 <body>
 
+	<div>
+		<a href="/">Main menu</a>
+	</div>
+
 </body>
 </html>

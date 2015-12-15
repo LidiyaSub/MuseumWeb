@@ -1,7 +1,5 @@
 package com.softserveinc.edu.ita.entity;
 
-import java.sql.Date;
-import java.sql.Time;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -23,10 +21,10 @@ public class Schedule {
 	private Long id;
 
 	@Column
-	private Date day;
+	private String day;
 
 	@Column
-	private Time time;
+	private String time;
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "Schedule_Worker", joinColumns = @JoinColumn(name = "Id_Schedule"), inverseJoinColumns = @JoinColumn(name = "Id_Worker"))
@@ -40,7 +38,7 @@ public class Schedule {
 
 	}
 
-	public Schedule(Date day, Time time) {
+	public Schedule(String day, String time) {
 		this.day = day;
 		this.time = time;
 	}
@@ -53,19 +51,19 @@ public class Schedule {
 		this.id = id;
 	}
 
-	public Date getDay() {
+	public String getDay() {
 		return day;
 	}
 
-	public void setDay(Date day) {
+	public void setDay(String day) {
 		this.day = day;
 	}
 
-	public Time getTime() {
+	public String getTime() {
 		return time;
 	}
 
-	public void setTime(Time time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 

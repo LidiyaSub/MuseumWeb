@@ -16,6 +16,10 @@ div {
 </head>
 <body>
 
+	<div>
+		<a href="/">Main menu</a>
+	</div>
+
 	<c:if test="${param.message eq true}">
 		<div>Worker is added!</div>
 	</c:if>

@@ -6,10 +6,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+
+<style type="text/css">
+<c:import url="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.8.8/jquery.timepicker.min.css"/>
+</style>
+
+<script type="text/javascript">
+<c:import url="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css"/>
+</script>
+
+<script type="text/javascript">
+<c:import url="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"/>
+</script>
+
+<script type="text/javascript">
+<c:import url="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"/>
+</script>
+
+<script type="text/javascript">
+<c:import url="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.8.8/jquery.timepicker.min.js"/>
+</script>
+
+<script>
+  $(document).ready(function() {
+    $('#datepicker').datepicker();
+    $('#timepicker').timepicker({'timeFormat': 'H:i'});
+  });
+  </script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Schedule</title>
 </head>
 <body>
+	<div>
+		<a href="/">Main menu</a>
+	</div>
 
 	<c:if test="${param.message eq true}">
 		<div>Schedule is added!</div>
@@ -21,20 +51,18 @@
 		<div>Schedule is edited!</div>
 	</c:if>
 
-	<h1>Worker</h1>
+	<h1>Schedule</h1>
 	<table border="1">
 		<tr>
 			<th>Day</th>
 			<th>Time</th>
 		</tr>
-		<c:forEach items="${workers}" var="worker">
+		<c:forEach items="${schedules}" var="schedule1">
 			<tr>
-				<td>${schedule.day}</td>
-				<td>${schedule.time}</td>
-				<td><a
-					href="${pageContext.request.contextPath}/deleteSchedule/${schedule.id}">delete</a></td>
-				<td><a
-					href="${pageContext.request.contextPath}/editSchedule/${schedule.id}">edit</a></td>
+				<td>${schedule1.day}</td>
+				<td>${schedule1.time}</td>
+				<td><a href="${pageContext.request.contextPath}/deleteSchedule/${schedule1.id}">delete</a></td>
+				<td><a href="${pageContext.request.contextPath}/editSchedule/${schedule1.id}">edit</a></td>
 			</tr>
 		</c:forEach>
 
@@ -42,20 +70,12 @@
 	<br>
 	<br>
 
-	<form:form action="saveWorker" method="POST" modelAttribute="worker">
-		<label for="name">Name</label>
-		<br>
-		<form:input path="nameWorker" id="name" />
-		<br>
-		<label for="name">Position</label>
-		<br>
-		<form:input path="position" id="position" />
-		<br>
-		<label for="name">Salary</label>
-		<br>
-		<form:input path="salary" id="salary" />
-		<br>
-		<input name="commit" type="submit" value="Add worker" />
+	<form:form action="saveSchedule" method="POST" modelAttribute="schedule" >
+		<label>Date</label><br>
+		<form:input path="day" id="datepicker"/>
+		<label>Time</label>
+		<form:input path="time" id="timepicker"/>
+		<input name="commit" type="submit" value="Add new schedule" />
 	</form:form>
 
 </body>
