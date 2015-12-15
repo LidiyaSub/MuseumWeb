@@ -30,7 +30,7 @@
 <script>
   $(document).ready(function() {
     $('#datepicker').datepicker();
-    $('#timepicker').timepicker({'timeFormat': 'H:i'});
+    $("#datepicker").keypress(function(event) {event.preventDefault();});
   });
   </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -54,13 +54,11 @@
 	<h1>Schedule</h1>
 	<table border="1">
 		<tr>
-			<th>Day</th>
-			<th>Time</th>
+			<th>Date and Time</th>
 		</tr>
 		<c:forEach items="${schedules}" var="schedule1">
 			<tr>
-				<td>${schedule1.day}</td>
-				<td>${schedule1.time}</td>
+				<td>${schedule1.dateTime}</td>
 				<td><a href="${pageContext.request.contextPath}/deleteSchedule/${schedule1.id}">delete</a></td>
 				<td><a href="${pageContext.request.contextPath}/editSchedule/${schedule1.id}">edit</a></td>
 			</tr>
@@ -72,9 +70,7 @@
 
 	<form:form action="saveSchedule" method="POST" modelAttribute="schedule" >
 		<label>Date</label><br>
-		<form:input path="day" id="datepicker"/>
-		<label>Time</label>
-		<form:input path="time" id="timepicker"/>
+		<form:input path="dateTime" id="datepicker" />
 		<input name="commit" type="submit" value="Add new schedule" />
 	</form:form>
 

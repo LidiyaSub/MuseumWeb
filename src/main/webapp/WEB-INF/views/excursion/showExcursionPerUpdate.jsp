@@ -9,6 +9,10 @@
 <title>Update ${excursion.nameExcursion}</title>
 </head>
 <body>
+
+	<div>
+		<a href="/">Main menu</a>
+	</div>
 <table border="1">
 		<form:form action="saveUpdatedExcursion" method="POST"
 			modelAttribute="excursion">

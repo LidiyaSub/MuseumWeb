@@ -8,6 +8,9 @@
 <title>Add new author</title>
 </head>
 <body>
+	<div>
+		<a href="/">Main menu</a>
+	</div>
 	<sf:form action="saveAuthor" method="POST" modelAttribute="author">
 		<label for="name">Name</label>
 		<sf:input path="nameAuthor" id="name" />

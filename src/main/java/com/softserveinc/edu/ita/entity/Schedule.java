@@ -21,10 +21,7 @@ public class Schedule {
 	private Long id;
 
 	@Column
-	private String day;
-
-	@Column
-	private String time;
+	private String dateTime;
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "Schedule_Worker", joinColumns = @JoinColumn(name = "Id_Schedule"), inverseJoinColumns = @JoinColumn(name = "Id_Worker"))
@@ -38,9 +35,8 @@ public class Schedule {
 
 	}
 
-	public Schedule(String day, String time) {
-		this.day = day;
-		this.time = time;
+	public Schedule(String dateTime) {
+		this.dateTime = dateTime;
 	}
 
 	public Long getId() {
@@ -52,19 +48,11 @@ public class Schedule {
 	}
 
 	public String getDay() {
-		return day;
+		return dateTime;
 	}
 
-	public void setDay(String day) {
-		this.day = day;
-	}
-
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
+	public void setDay(String dateTime) {
+		this.dateTime = dateTime;
 	}
 
 	public List<Worker> getWorker() {
@@ -83,10 +71,5 @@ public class Schedule {
 		this.listOfExcursion = listOfExcursion;
 	}
 
-	@Override
-	public String toString() {
-		return "Schedule [id=" + id + ", day=" + day + ", time=" + time + ", worker=" + worker + ", listOfExcursion="
-				+ listOfExcursion + "]";
-	}
 
 	}

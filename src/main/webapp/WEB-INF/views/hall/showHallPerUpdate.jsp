@@ -8,6 +8,10 @@
 <title>Update hall info</title>
 </head>
 <body>
+
+	<div>
+		<a href="/">Main menu</a>
+	</div>
 <h2>Update hall ${hallInfo.nameHall}</h2>
 	<sf:form action="saveUpdateHall" method="POST" modelAttribute="hallInfo">
 		<sf:input path="id" type="hidden" value="${hallInfo.id}" />

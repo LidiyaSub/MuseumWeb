@@ -12,6 +12,7 @@
 	<h2><a href="showAllSchedules">Show all schedules</a></h2>
 	<h2><a href="assignWorkerToSchedule">Assign worker to schedule</a></h2>
 	<h2><a href="showAllHalls">Show all halls</a></h2>
+	<h2><a href="showAllWorkers">Show all workers</a></h2>
 	<h2><a href="showAllExcursions">Show all excursion</a></h2>
 </body>
 </html>

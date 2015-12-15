@@ -9,6 +9,10 @@
 <title>Add new Hall</title>
 </head>
 <body>
+
+	<div>
+		<a href="/">Main menu</a>
+	</div>
 <table border="1">
 	<form:form action="saveHall" method="POST" modelAttribute="hallInfo">
 	<tr>

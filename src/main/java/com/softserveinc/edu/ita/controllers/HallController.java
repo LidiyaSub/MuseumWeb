@@ -1,8 +1,5 @@
 package com.softserveinc.edu.ita.controllers;
 
-import java.util.List;
-
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,9 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.softserveinc.edu.ita.entity.Author;
 import com.softserveinc.edu.ita.entity.Hall;
-import com.softserveinc.edu.ita.entity.Worker;
 import com.softserveinc.edu.ita.service.HallService;
 import com.softserveinc.edu.ita.service.ShowpieceService;
 import com.softserveinc.edu.ita.service.WorkerService;
@@ -32,21 +27,8 @@ public class HallController {
 	
 	@RequestMapping("/showAllHalls")
 	public String showHalls(Model model){
-		List<Hall> listHalls = hallService.getAllHalls();
-//		Hibernate.initialize(listHalls);
-//		for (int i = 0; i < listHalls.size(); i++) {
-//			Hibernate.initialize(listHalls.get(i));
-//			Hibernate.initialize(listHalls.get(i).getWorker());
-//			for (int k = 0; k < listHalls.get(i).getShowpiece().size(); k++) {
-//				Hibernate.initialize(listHalls.get(i).getShowpiece().get(k).getNameShowpiece());
-//			}
-//			
-//		}
-		for (int i = 0; i < listHalls.size(); i++) {
-			listHalls.get(i).getWorker();
-			listHalls.get(i).getShowpiece();
-		}
-		model.addAttribute("allHalls", listHalls);
+		model.addAttribute("allHalls", hallService.getAllHalls());
+		model.addAttribute("allShowpieces", showpieceService.getAllShowpieces());
 		return "hall/show-halls";
 	}
 	
@@ -55,8 +37,6 @@ public class HallController {
 		model.addAttribute("hallInfo", new Hall());
 		model.addAttribute("workerList", workerService.getAllWorkers());
 		model.addAttribute("showpieceList", showpieceService.getAllShowpieces());
-//		workerService.collectionDefaultModel(model);
-//		showpieceService.collectionDefaultModel(model);
 		return "hall/new-hall";
 		
 	}

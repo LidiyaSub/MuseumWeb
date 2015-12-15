@@ -9,6 +9,10 @@
 <title>Update ${authorInfo.nameAuthor}</title>
 </head>
 <body>
+
+	<div>
+		<a href="/">Main menu</a>
+	</div>
 	<h2>Update ${authorInfo.nameAuthor}</h2>
 	<sf:form action="saveUpdate" method="POST" modelAttribute="authorInfo">
 		<sf:input path="id" type="hidden" value="${authorInfo.id}" />

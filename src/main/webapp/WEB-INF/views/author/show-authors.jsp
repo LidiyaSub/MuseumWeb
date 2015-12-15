@@ -13,6 +13,10 @@ div {
 </style>
 </head>
 <body>
+
+	<div>
+		<a href="/">Main menu</a>
+	</div>
 	<c:if test="${param.message eq true}">
 		<div>Author is added!</div>
 	</c:if>
