@@ -4,8 +4,6 @@ import org.springframework.ui.Model;
 
 import com.softserveinc.edu.ita.entity.Showpiece;
 
-public interface ShowpieceDao extends GeneralDao<Showpiece, Long>{
-
-	void collectionDefaultModel(Model model);
+public interface ShowpieceDao extends GeneralDao<Showpiece, Long> {
 
 }

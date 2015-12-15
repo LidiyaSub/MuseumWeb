@@ -14,29 +14,31 @@
 		<a href="/">Main menu</a>
 	</div>
 <table border="1">
-	<form:form action="saveHall" method="POST" modelAttribute="hallInfo">
+	<form:form action="saveHall" method="POST" >
 	<tr>
-		<th><form:label path="nameHall">Hall name</form:label></th>
-		<th><form:label path="worker">Responsible worker</form:label></th>
-		<th><form:label path="showpiece">Showpieces</form:label></th>
+		<th><label for="name_Hall">Hall name</label></th>
+		<th><label for="worker_item">Responsible worker</label></th>
+		<th><label for="showpiece_list">Showpieces</label></th>
 	</tr>
 	<tr>
 		<td>
-		<form:input path="nameHall" />
+		<input name="nameHall" id="name_Hall" />
 		</td>
 		<td>
-		<form:select path="worker">
-			<form:option value="0" label="Select responsible" />
-			<form:options items="${workerList}" itemValue="id"
-				itemLabel="nameWorker" />
-		</form:select>
+		<select name="worker" id="worker_item">
+			<option value="0" label="--Select responsible--" />
+			<c:forEach items="${workers}" var="worker">
+				<option value="${worker.id}" label="${worker.nameWorker}" />
+			</c:forEach>
+		</select>
 		</td>
 		<td>
-		<form:select path="showpiece" multiply="true">
-			<form:option value="0" label="Select showpieces" />
-			<form:options items="${showpieceList}" itemValue="id"
-				itemLabel="nameShowpiece" />
-		</form:select>
+		<select name="showpieces" id="showpiece_list" multiple="multiple" size="3">
+			<option value="0" label="--Select showpieces--" />
+			<c:forEach items="${showpieces}" var="showpiece">
+				<option value="${showpiece.id}" label="${showpiece.nameShowpiece}" />
+			</c:forEach>
+		</select>
 		</td>
 	</tr>
 	<tr>

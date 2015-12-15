@@ -38,10 +38,8 @@ div {
 			<tr>
 				<td>${excursion.nameExcursion}</td>
 				<td>${excursion.duration}</td>
-				<td><c:forEach items="${excursion.listOfSchedule}"
-						var="schedule">
-						<li>${schedule.day} ${schedule.time}</li>
-					</c:forEach>
+				<td>
+				${excursion.listOfSchedule.id}
 				</td>
 				<td><a href="updateExcursion-${excursion.id}">Update</a> | <a href="deleteExcursion-${excursion.id}">Delete</a></td>
 			</tr>

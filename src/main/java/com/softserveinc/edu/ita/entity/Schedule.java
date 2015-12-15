@@ -47,11 +47,11 @@ public class Schedule {
 		this.id = id;
 	}
 
-	public String getDay() {
+	public String getDateTime() {
 		return dateTime;
 	}
 
-	public void setDay(String dateTime) {
+	public void setDateTime(String dateTime) {
 		this.dateTime = dateTime;
 	}
 

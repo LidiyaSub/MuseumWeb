@@ -8,12 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.softserveinc.edu.ita.entity.Excursion;
 import com.softserveinc.edu.ita.service.ExcursionService;
 import com.softserveinc.edu.ita.service.ScheduleService;
+import com.softserveinc.edu.ita.service.ShowpieceService;
 
 @Controller
 public class ExcursionController {
@@ -28,6 +28,7 @@ public class ExcursionController {
 	public String showAll(Model model) {
 		List<Excursion> allExcursions = excursionService.getAllExcursions();
 		model.addAttribute("allExcursions", allExcursions);
+		model.addAttribute("scheduleInfo", scheduleService.getAllSchedules());
 		return "excursion/show-excursions";
 	}
 

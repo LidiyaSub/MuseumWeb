@@ -1,5 +1,6 @@
 package com.softserveinc.edu.ita.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,8 +50,13 @@ public class ShowpieceServiceImpl implements ShowpieceService {
 
 	@Override
 	public void collectionDefaultModel(Model model) {
-		dao.collectionDefaultModel(model);
-		
+		List<String> showpieces = new ArrayList<String>();
+		List<Showpiece> list = dao.getAll();
+		for (int i = 0; i < list.size(); i++) {
+			showpieces.add(list.get(i).getNameShowpiece());
+		}
+		model.addAttribute("listNameShowpiece", showpieces);
+
 	}
 
 }

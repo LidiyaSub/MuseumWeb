@@ -69,7 +69,7 @@ public class Hall {
 
 	@Override
 	public String toString() {
-		return "Hall [id=" + id + ", nameHall=" + nameHall + ", showpiece=" + showpiece + ", worker=" + worker + "]";
+		return "Hall [id=" + id + ", nameHall=" + nameHall + "]";
 	}
 
 }
