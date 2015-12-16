@@ -66,8 +66,13 @@ public class ExcursionController {
 	}
 
 	@RequestMapping(value = "/saveUpdatedExcursion", method = RequestMethod.POST)
-	public String saveUpdate(@ModelAttribute("excursion") Excursion excursion) {
-		// some code
+	public String saveUpdate(@ModelAttribute("excursion") Excursion excursion,
+			@RequestParam("listOfSchedule") Long[] ids) {
+		List<Schedule> list = new ArrayList<Schedule>();
+		for (Long id : ids) {
+			list.add(scheduleService.findOneById(id));
+		}
+		excursion.setListOfSchedule(list);
 		excursionService.updateExcursion(excursion);
 		return "redirect:/showAllExcursions?notify=true";
 	}
