@@ -3,18 +3,20 @@
 <%@ include file="/resources/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Add new author</title>
-</head>
+<jsp:include page="../header.jsp" />
+
 <body>
-	<div>
-		<a href="/">Main menu</a>
-	</div>
-	<form:form action="saveAuthor" method="POST" modelAttribute="author">
-		<label for="name">Name</label>
-		<form:input path="nameAuthor" id="name" />
-		<input name="commit" type="submit" value="Add"/>
+<div class="container">
+	
+	<form:form action="saveAuthor" method="POST" modelAttribute="author" class="form-horizontal">
+		<div class="form-group">
+		<label for="name" class="col-sm-2 control-label">Name</label>
+		<div class="col-sm-10">
+		<form:input path="nameAuthor" id="name" class="form-control"/>
+		<input name="commit" type="submit" value="Add" class="btn-lg btn-primary pull-right"/>
+		</div>
+		</div>
 	</form:form>
+	</div>
 </body>
 </html>

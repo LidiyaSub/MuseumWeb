@@ -3,32 +3,42 @@
 <%@ include file="/resources/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Show all excursions</title>
-<style type="text/css">
-div {
-	background-color: lightgreen;
-}
-</style>
-</head>
+<jsp:include page="../header.jsp" />
 <body>
-
-	<div>
-		<a href="/">Main menu</a>
-	</div>
+<div class="container">
+	
 	<c:if test="${param.message eq true}">
-		<div>Excursion is deleted!</div>
+		<div class="alert alert-success alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" 
+                                aria-label="Close">
+				<span aria-hidden="true">×</span>
+			</button>
+			<strong>Excursion deleted successfully!</strong>
+		</div>
 	</c:if>
 	<c:if test="${param.msg eq true}">
-		<div>Excursion is added!</div>
+		<div class="alert alert-success alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" 
+                                aria-label="Close">
+				<span aria-hidden="true">×</span>
+			</button>
+			<strong>Excursion added successfully!</strong>
+		</div>
 	</c:if>
 	<c:if test="${param.notify eq true}">
-		<div>Excursion is updated!</div>
+		<div class="alert alert-success alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" 
+                                aria-label="Close">
+				<span aria-hidden="true">×</span>
+			</button>
+			<strong>Excursion updated successfully!</strong>
+		</div>
 	</c:if>
-
+<h2>
+		<a href="addNewExcursion" class="btn btn-info">Add new excursion</a>
+	</h2>
 	<form action="deleteExcursion">
-		<table border="1">
+		<table class="table table-hover">
 			<tr>
 				<th>Name</th>
 				<th>Duration</th>
@@ -53,15 +63,14 @@ div {
 					</td>
 					<td><input type="checkbox" name="checkbox"
 						value="${excursion.id}"></td>
-					<td><a href="updateExcursion-${excursion.id}">Update</a></td>
+					<td><a href="updateExcursion-${excursion.id}" class="btn btn-primary">Update</a></td>
 				</tr>
 			</c:forEach>
 
 		</table>
-		<br> <input type="submit" value="delete" id="delete" disabled />
+		<br> <input type="submit" class="btn btn-danger" value="delete" id="delete" disabled />
 	</form>
-	<h2>
-		<a href="addNewExcursion">Add new excursion</a>
-	</h2>
+	
+	</div>
 </body>
 </html>

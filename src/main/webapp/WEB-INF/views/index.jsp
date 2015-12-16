@@ -3,12 +3,10 @@
 <%@ include file="/resources/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Home</title>
-</head>
+<jsp:include page="header.jsp" />
 <body>
-
+<div class="container">
+<h1>Museum manager</h1>
 	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -50,7 +48,7 @@
 	</table>
 
 
-	<h1>Museum manager</h1>
+	
 	<h2>
 		<a href="showAllAuthors">Show all authors</a>
 	</h2>
@@ -72,5 +70,6 @@
 	<h2>
 		<a href="assignWorkerToSchedule">Assign worker to schedule</a>
 	</h2>
+	</div>
 </body>
 </html>

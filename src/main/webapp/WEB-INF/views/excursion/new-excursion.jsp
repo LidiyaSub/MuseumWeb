@@ -3,27 +3,33 @@
 <%@ include file="/resources/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Add new excursion</title>
-</head>
+<jsp:include page="../header.jsp" />
 <body>
 
-	<div>
-		<a href="/">Main menu</a>
-	</div>
-	<table border="1">
-		<form:form action="saveAddedExcursion" method="POST">
-			<tr>
-				<th><label for="name_Excursion">Excursion name</label></th>
-				<th><label for="for_duration">Duration</label></th>
-				<th><label for="list_Schedules">Schedule</label></th>
-			</tr>
-			<tr>
-				<td><input name="nameExcursion" id="name_Excursion" /></td>
-				<td><input name="duration" id="for_duration" /></td>
-				<td><select name="listOfSchedule" multiple="multiple"
-					id="list_Schedules">
+	<div class="container">
+
+		<form:form action="saveAddedExcursion" method="POST"
+			class="form-horizontal">
+
+			<div class="form-group">
+				<label for="name_Excursion" class="col-sm-2 control-label">Excursion
+					name</label>
+				<div class="col-sm-10">
+					<input name="nameExcursion" id="name_Excursion"
+						class="form-control" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="for_duration" class="col-sm-2 control-label">Duration</label>
+				<div class="col-sm-10">
+					<input name="duration" id="for_duration" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="list_Schedules" class="col-sm-2 control-label">Schedule</label>
+				<div class="col-sm-5">
+					<select name="listOfSchedule" multiple="multiple" size="5"
+						id="list_Schedules" class="form-control">
 						<option value="0" label="--Select schedule--" />
 						<c:forEach items="${scheduleList}" var="schedule">
 							<option value="${schedule.id}"
@@ -31,14 +37,18 @@
 						</c:forEach>
 
 					</select>
-				</td>
+				</div>
+				<div class="col-sm-5"></div>
+			</div>
 
-			</tr>
-			<tr>
-				<td colspan="3"><input type="submit" value="Add" align="right" />
-				</td>
-			</tr>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<input type="submit" value="Add"
+						class="btn-lg btn-primary pull-right" />
+				</div>
+			</div>
 		</form:form>
-	</table>
+
+	</div>
 </body>
 </html>
