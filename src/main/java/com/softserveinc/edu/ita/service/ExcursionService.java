@@ -16,4 +16,6 @@ public interface ExcursionService {
 
 	public Excursion findOneById(Long id);
 
+	public List<Excursion> getAllExcursionsAndDataTimeSchedule();
+
 }
