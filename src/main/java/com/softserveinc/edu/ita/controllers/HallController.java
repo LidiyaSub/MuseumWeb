@@ -21,80 +21,77 @@ import com.softserveinc.edu.ita.service.WorkerService;
 
 @Controller
 public class HallController {
-	
+
 	@Autowired
 	private HallService hallService;
-	
+
 	@Autowired
 	private WorkerService workerService;
-	
+
 	@Autowired
 	private ShowpieceService showpieceService;
-	
+
 	@RequestMapping(value = "/showAllHalls", method = RequestMethod.GET)
-	public String showHalls(Model model){
+	public String showHalls(Model model) {
 		model.addAttribute("allHalls", hallService.getAllHalls());
 		model.addAttribute("allShowpieces", showpieceService.getAllShowpieces());
 		model.addAttribute("allWorkers", workerService.getAllWorkers());
 		return "hall/show-halls";
 	}
-	
+
 	@RequestMapping(value = "/addHall", method = RequestMethod.GET)
-	public String addNewHall(Model model){
-		
+	public String addNewHall(Model model) {
+
 		model.addAttribute("workers", workerService.getAllWorkers());
 		model.addAttribute("showpieces", showpieceService.getAllShowpieces());
-		
+
 		return "hall/new-hall";
-		
+
 	}
-	
-	@RequestMapping(value="/saveHall", method = RequestMethod.POST)
-	public String saveNewHall(
-			Model model,
-			@RequestParam(value="nameHall") String nameHall,
-			@RequestParam(value="worker") Long idWorker,
-			@RequestParam(value="showpieces") Long[] idsShowpieces){
-		
+
+	@RequestMapping(value = "/saveHall", method = RequestMethod.POST)
+	public String saveNewHall(Model model, @RequestParam(value = "nameHall") String nameHall,
+			@RequestParam(value = "worker") Long idWorker, @RequestParam(value = "showpieces") Long[] idsShowpieces) {
+
 		Hall hall = new Hall(nameHall);
-			Worker worker = workerService.findOneById(idWorker);
-			List<Showpiece> list = new ArrayList<Showpiece>();
-			for (Long id : idsShowpieces) {
-				list.add(showpieceService.findOneById(id));
-			}
-			hall.setWorker(worker);
-			hall.setShowpiece(list);
-//			for (Showpiece showpiece : list) {
-//				System.out.println(showpiece);
-//			}
-			
-			hallService.saveHall(hall);
-			return "redirect:/showAllHalls?message=true";
-	
-		
+		Worker worker = workerService.findOneById(idWorker);
+		List<Showpiece> list = new ArrayList<Showpiece>();
+		for (Long id : idsShowpieces) {
+			list.add(showpieceService.findOneById(id));
+		}
+		hall.setWorker(worker);
+		hall.setShowpiece(list);
+		// for (Showpiece showpiece : list) {
+		// System.out.println(showpiece);
+		// }
+
+		hallService.saveHall(hall);
+		return "redirect:/showAllHalls?message=true";
+
 	}
-	
-	@RequestMapping(value="/updateHall-{id}", method = RequestMethod.GET)
-	public String updateHall(@PathVariable("id") Long id, Model model){
+
+	@RequestMapping(value = "/updateHall-{id}", method = RequestMethod.GET)
+	public String updateHall(@PathVariable("id") Long id, Model model) {
 		Hall hall = hallService.findOneById(id);
 		model.addAttribute("hallInfo", hall);
 		model.addAttribute("workerList", workerService.getAllWorkers());
 		model.addAttribute("showpieceList", showpieceService.getAllShowpieces());
 		return "hall/showHallPerUpdate";
 	}
-	
+
 	@RequestMapping(value = "/saveUpdateHall", method = RequestMethod.POST)
 	public String saveModify(@ModelAttribute(value = "hallInfo") Hall hall) {
 		hallService.updateHall(hall);
-		//some code
+		// some code
 		return "redirect:/showAllHalls?msg=true";
 	}
-	
-	@RequestMapping(value = "/deleteHall-{id}", method = RequestMethod.GET)
-	public String deleteHall(@PathVariable("id") Long id){
-		Hall hall = hallService.findOneById(id);
-		hallService.deleteHall(id);
+
+	@RequestMapping(value = "/deleteHall", method = RequestMethod.GET)
+	public String deleteHall(@RequestParam("checkbox") Long[] id) {
+		for (Long long1 : id) {
+			hallService.deleteHall(long1);
+		}
 		return "redirect:/showAllHalls?notify=true";
-		
+
 	}
 }

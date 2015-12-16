@@ -9,25 +9,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
-<
-c
-:import
- 
-url
-="https
-:
-//cdnjs
-.cloudflare
-.com
-/ajax/libs/jquery-timepicker/1
-.8
-.8
-/jquery
-.timepicker
-.min
-.css
-"/
->
+<c:import url="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.8.8/jquery.timepicker.min.css"/>
 </style>
 
 <script type="text/javascript">

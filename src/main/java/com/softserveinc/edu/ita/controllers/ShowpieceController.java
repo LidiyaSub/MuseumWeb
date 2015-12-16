@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.softserveinc.edu.ita.entity.Showpiece;
 import com.softserveinc.edu.ita.service.AuthorService;
@@ -24,7 +25,7 @@ public class ShowpieceController {
 	@Autowired
 	private HallService hallService;
 
-	@RequestMapping("/showAllShowpieces")
+	@RequestMapping(value = "/showAllShowpieces", method = RequestMethod.GET)
 	public String showAllShowpieces(Model model) {
 		model.addAttribute("showpieces", showpieceService.getAllShowpieces());
 		model.addAttribute("authors", authorService.getAllAuthors());
@@ -32,7 +33,7 @@ public class ShowpieceController {
 		return "showpiece/show-showpieces";
 	}
 
-	@RequestMapping("/createShowpiece")
+	@RequestMapping(value = "/createShowpiece", method = RequestMethod.GET)
 	public String createShowpiece(Model model) {
 		model.addAttribute("showpiece", new Showpiece());
 		return "showpiece/newShowpiece";
@@ -42,6 +43,14 @@ public class ShowpieceController {
 	public String createShowpiece(@ModelAttribute("createShowpiece") Showpiece showpiece) {
 		showpieceService.saveShowpiece(showpiece);
 		return "showpiece/newShowpiece";
+	}
+	
+	@RequestMapping(value = "/deleteShowpiece", method = RequestMethod.GET)
+	public String deleteSchedule(@RequestParam("checkbox") Long [] id) {
+		for (Long long1 : id) {
+			showpieceService.deleteShowpiece(long1);
+		}
+		return "redirect:/show-schedules?delete=true";
 	}
 
 }

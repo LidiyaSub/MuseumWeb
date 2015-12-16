@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.softserveinc.edu.ita.entity.Author;
 import com.softserveinc.edu.ita.service.AuthorService;
@@ -59,12 +60,13 @@ public class AuthorController {
 		authorService.updateAuthor(author);
 		return "redirect:/showAllAuthors?msg=true";
 	}
-	
-	@RequestMapping(value = "/deleteAuthor-{id}", method = RequestMethod.GET)
-	public String deleteAuthor(@PathVariable("id") Long id){
-		Author author = authorService.findOneById(id);
-		authorService.deleteAuthor(id);
+
+	@RequestMapping(value = "/deleteAuthor", method = RequestMethod.GET)
+	public String deleteAuthor(@RequestParam("checkbox") Long[] id) {
+		for (Long long1 : id) {
+			authorService.deleteAuthor(long1);
+		}
 		return "redirect:/showAllAuthors?notify=true";
-		
+
 	}
 }

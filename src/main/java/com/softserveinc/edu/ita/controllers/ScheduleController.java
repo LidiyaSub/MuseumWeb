@@ -35,9 +35,11 @@ public class ScheduleController {
 		return "redirect:/show-schedules?message=true";
 	}
 	
-	@RequestMapping("/deleteSchedule/{id}")
-	public String deleteSchedule(@PathVariable("id") Long id) {
-		scheduleService.deleteSchedule(id);
+	@RequestMapping("/deleteSchedule")
+	public String deleteSchedule(@RequestParam("checkbox") Long [] id) {
+		for (Long long1 : id) {
+			scheduleService.deleteSchedule(long1);
+		}
 		return "redirect:/show-schedules?delete=true";
 	}
 
