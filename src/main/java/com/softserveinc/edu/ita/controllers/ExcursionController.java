@@ -26,9 +26,8 @@ public class ExcursionController {
 
 	@RequestMapping(value = "/showAllExcursions", method = RequestMethod.GET)
 	public String showAll(Model model) {
-		List<Excursion> allExcursions = excursionService.getAllExcursions();
+		List<Excursion> allExcursions = excursionService.getAllExcursionsAndDataTimeSchedule();
 		model.addAttribute("allExcursions", allExcursions);
-		model.addAttribute("allSchedules", scheduleService.getAllSchedules());
 		return "excursion/show-excursions";
 	}
 

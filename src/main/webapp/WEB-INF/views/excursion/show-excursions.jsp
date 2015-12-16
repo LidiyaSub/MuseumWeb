@@ -60,7 +60,13 @@ div {
 					<%-- 			<c:forEach items="${allSchedules}" var="schedule"> --%>
 					<%-- 					<td><c:if test="${excursion.id eq schedule.id}">${schedule.dateTimeSchedule}</c:if></td> --%>
 					<%-- 			</c:forEach> --%>
-					<td></td>
+					<td>
+					<c:forEach items="${excursion.listOfSchedule}" var="schedule">
+						
+							<li>${schedule.dateTimeSchedule}</li>
+						
+					</c:forEach>
+					</td>
 					<td><input type="checkbox" name="checkbox"
 						value="${excursion.id}"></td>
 					<td><a href="updateExcursion-${excursion.id}">Update</a></td>
