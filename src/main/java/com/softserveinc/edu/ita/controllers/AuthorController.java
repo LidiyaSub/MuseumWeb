@@ -23,11 +23,6 @@ public class AuthorController {
 	@Autowired
 	private ShowpieceService showpieceService;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String showInitialPage() {
-		return "index";
-	}
-
 	@RequestMapping(value = "/showAllAuthors", method = RequestMethod.GET)
 	public String getAllAuthors(Model model) {
 		List<Author> authors = authorService.getAllAuthors();

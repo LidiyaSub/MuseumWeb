@@ -22,7 +22,7 @@ public class Showpiece {
 	private String nameShowpiece;
 
 	@Column
-	private Date dateIncome;
+	private String dateIncome;
 
 	@Column
 	private String materials;
@@ -30,17 +30,17 @@ public class Showpiece {
 	@Column
 	private String technics;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
 	private Hall hall;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
 	private Author author;
 
 	public Showpiece() {
 
 	}
 
-	public Showpiece(String nameShowpiece, Date dateIncome, String materials, String technics) {
+	public Showpiece(String nameShowpiece, String dateIncome, String materials, String technics) {
 		this.nameShowpiece = nameShowpiece;
 		this.dateIncome = dateIncome;
 		this.materials = materials;
@@ -63,11 +63,11 @@ public class Showpiece {
 		this.nameShowpiece = nameShowpiece;
 	}
 
-	public Date getDateIncome() {
+	public String getDateIncome() {
 		return dateIncome;
 	}
 
-	public void setDateIncome(Date dateIncome) {
+	public void setDateIncome(String dateIncome) {
 		this.dateIncome = dateIncome;
 	}
 

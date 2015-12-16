@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ include file="/resources/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,21 +13,6 @@ div {
 	background-color: lightgreen;
 }
 </style>
-
-<script type="text/javascript">
-	<c:import url="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"/>
-</script>
-
-<script type="text/javascript">
-	$(document).ready(
-			function() {
-				var submit = $("#delete"), cbs = $('input[name="checkbox"]')
-						.click(function() {
-							submit.removeAttr('disabled', cbs.is(":checked")).attr('disabled', !cbs.is(":checked"));
-						});
-			});
-</script>
-
 
 </head>
 <body>
