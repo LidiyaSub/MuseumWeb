@@ -22,7 +22,7 @@ public class Showpiece {
 	private String nameShowpiece;
 
 	@Column
-	private Date dateIncome;
+	private String dateIncome;
 
 	@Column
 	private String materials;
@@ -40,7 +40,7 @@ public class Showpiece {
 
 	}
 
-	public Showpiece(String nameShowpiece, Date dateIncome, String materials, String technics) {
+	public Showpiece(String nameShowpiece, String dateIncome, String materials, String technics) {
 		this.nameShowpiece = nameShowpiece;
 		this.dateIncome = dateIncome;
 		this.materials = materials;
@@ -63,11 +63,11 @@ public class Showpiece {
 		this.nameShowpiece = nameShowpiece;
 	}
 
-	public Date getDateIncome() {
+	public String getDateIncome() {
 		return dateIncome;
 	}
 
-	public void setDateIncome(Date dateIncome) {
+	public void setDateIncome(String dateIncome) {
 		this.dateIncome = dateIncome;
 	}
 

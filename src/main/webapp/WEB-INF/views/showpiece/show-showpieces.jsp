@@ -30,7 +30,7 @@
 			<th>Name of Showpiece</th>
 			<th>Date Income</th>
 			<th>Materials</th>
-			<th>Techincs</th>
+			<th>Technics</th>
 			<th>Hall</th>
 			<th>Author</th>
 			<th>Delete</th>
