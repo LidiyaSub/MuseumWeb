@@ -49,7 +49,6 @@ div {
 			<tr>
 				<th>Hall name</th>
 				<th>Responsible for the hall</th>
-				<th>Showpieces</th>
 				<th>Delete</th>
 				<th>Update</th>
 			</tr>
@@ -58,11 +57,7 @@ div {
 				<tr>
 					<td>${hall.nameHall}</td>
 					<td>${hall.worker.nameWorker}</td>
-					<td><c:forEach items="${allShowpieces}" var="showpiece">
-							<c:if test="${showpiece.hall.id eq hall.id}">
-								<li>${showpiece.nameShowpiece}</li>
-							</c:if>
-						</c:forEach></td>
+
 					<td><input type="checkbox" name="checkbox" value="${hall.id}"></td>
 					<td><a href="updateHall-${hall.id}">Update</a></td>
 				</tr>

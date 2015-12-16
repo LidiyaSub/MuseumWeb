@@ -16,4 +16,6 @@ public interface HallService {
 
 	public Hall findOneById(Long id);
 
+	public List<Hall> getAllHallsWithWorkerAndShowpiece();
+
 }
