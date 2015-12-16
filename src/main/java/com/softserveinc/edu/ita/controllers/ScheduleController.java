@@ -40,7 +40,7 @@ public class ScheduleController {
 		for (Long long1 : id) {
 			scheduleService.deleteSchedule(long1);
 		}
-		return "redirect:/show-schedules?delete=true";
+		return "redirect:/showAllSchedules?delete=true";
 	}
 
 	@RequestMapping("/editSchedule/{id}")
@@ -52,6 +52,6 @@ public class ScheduleController {
 	@RequestMapping(value = "/editSchedule/{id}", method = RequestMethod.POST)
 	public String editSchedule(@ModelAttribute("schedule") Schedule schedule) {
 		scheduleService.updateSchedule(schedule);
-		return "redirect:/show-schedules?edit=true";
+		return "redirect:/showAllSchedules?edit=true";
 	}
 }

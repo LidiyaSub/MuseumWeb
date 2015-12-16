@@ -22,10 +22,11 @@ public class Hall {
 	@Column
 	private String nameHall;
 
-	@OneToMany(mappedBy = "hall", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "hall", fetch = FetchType.LAZY, cascade = { CascadeType.MERGE, CascadeType.PERSIST,
+			CascadeType.REFRESH }, orphanRemoval = true)
 	private List<Showpiece> showpiece;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH })
 	private Worker worker;
 
 	public Hall() {

@@ -21,7 +21,7 @@ public class Author {
 	@Column
 	private String nameAuthor;
 
-	@OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	private List<Showpiece> listOfShowpiece;
 
 	public Author() {

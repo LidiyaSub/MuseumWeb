@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ include file="/resources/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,12 +16,18 @@
 	<form:form
 		action="${pageContext.request.contextPath}/editWorker/${worker.id}"
 		method="POST" modelAttribute="worker">
-		<label>Name</label><br>
-		<form:input path="nameWorker" id="name"/><br>
-		<label>Position</label><br>
-		<form:input path="position" id="position"/><br>
-		<label>Salary</label><br>
-		<form:input path="salary" id="salary"/><br>
+		<label>Name</label>
+		<br>
+		<form:input path="nameWorker" id="name" />
+		<br>
+		<label>Position</label>
+		<br>
+		<form:input path="position" id="position" />
+		<br>
+		<label>Salary</label>
+		<br>
+		<form:input path="salary" id="salary" />
+		<br>
 		<input name="commit" type="submit" value="Confirm" />
 	</form:form>
 

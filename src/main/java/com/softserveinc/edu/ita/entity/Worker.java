@@ -30,11 +30,11 @@ public class Worker {
 	@Column
 	private String position;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinTable(name = "Schedule_Worker", joinColumns = @JoinColumn(name = "Id_Worker"), inverseJoinColumns = @JoinColumn(name = "Id_Schedule"))
 	private List<Schedule> listOfSchedule;
 
-	@OneToMany(mappedBy = "worker", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "worker", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY, orphanRemoval = false)
 	private List<Hall> hall;
 
 	public Worker() {

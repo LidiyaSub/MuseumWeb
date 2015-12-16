@@ -50,7 +50,7 @@ public class ShowpieceController {
 		for (Long long1 : id) {
 			showpieceService.deleteShowpiece(long1);
 		}
-		return "redirect:/show-schedules?delete=true";
+		return "redirect:/showAllShowpieces?delete=true";
 	}
 
 }
