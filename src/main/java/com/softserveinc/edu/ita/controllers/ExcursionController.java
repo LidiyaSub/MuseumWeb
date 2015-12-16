@@ -1,5 +1,6 @@
 package com.softserveinc.edu.ita.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.softserveinc.edu.ita.entity.Excursion;
+import com.softserveinc.edu.ita.entity.Schedule;
 import com.softserveinc.edu.ita.service.ExcursionService;
 import com.softserveinc.edu.ita.service.ScheduleService;
 
@@ -26,20 +28,30 @@ public class ExcursionController {
 
 	@RequestMapping(value = "/showAllExcursions", method = RequestMethod.GET)
 	public String showAll(Model model) {
-		List<Excursion> allExcursions = excursionService.getAllExcursionsAndDataTimeSchedule();
+		List<Excursion> allExcursions = excursionService
+				.getAllExcursionsAndDataTimeSchedule();
 		model.addAttribute("allExcursions", allExcursions);
 		return "excursion/show-excursions";
 	}
 
 	@RequestMapping(value = "/addNewExcursion", method = RequestMethod.GET)
 	public String addNew(Model model) {
-		model.addAttribute("excursion", new Excursion());
+
 		model.addAttribute("scheduleList", scheduleService.getAllSchedules());
 		return "excursion/new-excursion";
 	}
 
 	@RequestMapping(value = "/saveAddedExcursion", method = RequestMethod.POST)
-	public String saveExcursion(@ModelAttribute("excursion") Excursion excursion) {
+	public String saveExcursion(
+			@RequestParam("nameExcursion") String nameExcursion,
+			@RequestParam("duration") String duration,
+			@RequestParam("listOfSchedule") Long[] ids) {
+		Excursion excursion = new Excursion(nameExcursion, duration);
+		List<Schedule> list = new ArrayList<Schedule>();
+		for (Long id : ids) {
+			list.add(scheduleService.findOneById(id));
+		}
+		excursion.setListOfSchedule(list);
 		excursionService.saveExcursion(excursion);
 		return "redirect:/showAllExcursions?msg=true";
 
@@ -55,13 +67,13 @@ public class ExcursionController {
 
 	@RequestMapping(value = "/saveUpdatedExcursion", method = RequestMethod.POST)
 	public String saveUpdate(@ModelAttribute("excursion") Excursion excursion) {
-		//some code
+		// some code
 		excursionService.updateExcursion(excursion);
 		return "redirect:/showAllExcursions?notify=true";
 	}
 
 	@RequestMapping(value = "/deleteExcursion", method = RequestMethod.GET)
-	public String deleteExcursion(@RequestParam("checkbox") Long [] id) {
+	public String deleteExcursion(@RequestParam("checkbox") Long[] id) {
 		for (Long long1 : id) {
 			excursionService.deleteExcursion(long1);
 		}

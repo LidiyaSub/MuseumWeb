@@ -1,6 +1,5 @@
 package com.softserveinc.edu.ita.entity;
 
-import java.sql.Time;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -25,7 +24,7 @@ public class Excursion {
 	private String nameExcursion;
 
 	@Column
-	private Time duration;
+	private String duration;
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "Excursion_Schedule", joinColumns = @JoinColumn(name = "Id_Excursion"), inverseJoinColumns = @JoinColumn(name = "Id_Schedule"))
@@ -35,7 +34,7 @@ public class Excursion {
 
 	}
 
-	public Excursion(String nameExcursion, Time duration) {
+	public Excursion(String nameExcursion, String duration) {
 		this.nameExcursion = nameExcursion;
 		this.duration = duration;
 	}
@@ -56,11 +55,11 @@ public class Excursion {
 		this.nameExcursion = nameExcursion;
 	}
 
-	public Time getDuration() {
+	public String getDuration() {
 		return duration;
 	}
 
-	public void setDuration(Time duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 
