@@ -60,31 +60,6 @@
 		</div>
 		</form>
 
-<<<<<<< HEAD
-		<form:form action="saveWorker" method="POST" modelAttribute="worker">
-			<div class="form-group">
-				<label for="name">Name</label> <br>
-				<form:input path="nameWorker" id="name" />
-				<br>
-			</div>
-			<div class="form-group">
-				<label for="name">Position</label> <br>
-				<form:input path="position" id="position" />
-				<br>
-			</div>
-			<div class="form-group">
-				<label for="name">Salary</label> <br>
-				<form:input path="salary" id="salary" />
-				<br>
-			</div>
-			<div class="form-group">
-				
-			<input type="submit" name="commit" value="Add worker" class="btn btn-primary" />
-			
-			</div>
-		</form:form>
-=======
->>>>>>> 2f7e5301f34bcc48bb74aebe1d1fee9fce700569
 	</div>
 <jsp:include page="../footer.jsp" />
 </body>
