@@ -5,7 +5,7 @@
 <spring:url value="/showAllSchedules" var="urlShowAllSchedules" />
 <spring:url value="/showAllShowpieces" var="urlShowAllShowpieces" />
 <spring:url value="/showAllWorkers" var="urlShowAllWorkers" />
-<spring:url value="/assignWorkerToSchedule" var="urlAssignWorkerToSchedule" />
+<%-- <spring:url value="/assignWorkerToSchedule" var="urlAssignWorkerToSchedule" /> --%>
 <nav class="navbar navbar-inverse ">
 	<div class="container">
 		<div class="navbar-header">
@@ -15,7 +15,7 @@
 			<a class="navbar-brand" href="${urlShowAllSchedules}">Schedules</a>
 			<a class="navbar-brand" href="${urlShowAllShowpieces}">Showpieces</a>
 			<a class="navbar-brand" href="${urlShowAllWorkers}">Workers</a>
-			<a class="navbar-brand" href="${urlAssignWorkerToSchedule}">Assign Worker To Schedule</a>
+<%-- 			<a class="navbar-brand" href="${urlAssignWorkerToSchedule}">Assign Worker To Schedule</a> --%>
 		</div>
 		
 	</div>
