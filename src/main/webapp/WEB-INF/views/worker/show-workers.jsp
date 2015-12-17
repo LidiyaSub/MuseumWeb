@@ -34,7 +34,7 @@
 			</div>
 		</c:if>
 		<h2>
-			<a href="createAuthor" class="btn btn-info">Add Worker</a>
+			<a href="createWorker" class="btn btn-info">Add Worker</a>
 		</h2>
 		<form action="deleteWorker">
 			<table class="table table-hover">
@@ -58,24 +58,6 @@
 			<br> <input class="btn btn-danger" type="submit" value="delete" id="delete" disabled />
 		</form>
 
-		<form:form action="saveWorker" method="POST" modelAttribute="worker">
-			<div class="form-group">
-				<label for="name">Name</label> <br>
-				<form:input path="nameWorker" id="name" />
-				<br>
-			</div>
-			<div class="form-group">
-				<label for="name">Position</label> <br>
-				<form:input path="position" id="position" />
-				<br>
-			</div>
-			<div class="form-group">
-				<label for="name">Salary</label> <br>
-				<form:input path="salary" id="salary" />
-				<br>
-			</div>
-			<input type="submit" name="commit" value="Add worker" />
-		</form:form>
 	</div>
 </body>
 </html>

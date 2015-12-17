@@ -3,33 +3,24 @@
 <%@ include file="/resources/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Edit worker</title>
-</head>
+<jsp:include page="../header.jsp" />
 <body>
 
-	<div>
-		<a href="/">Main menu</a>
+	<div class="container">
+		<h2>Update ${worker.nameWorker}</h2>
+		<form:form
+			action="${pageContext.request.contextPath}/editWorker/${worker.id}"
+			method="POST" modelAttribute="worker" class="form-horizontal">
+			<div class="form-group">
+				<label>Name</label> <br>
+				<form:input path="nameWorker" id="name" />
+				<br> <label>Position</label> <br>
+				<form:input path="position" id="position" />
+				<br> <label>Salary</label> <br>
+				<form:input path="salary" id="salary" />
+				<br> <input name="commit" type="submit" value="Confirm" />
+			</div>
+		</form:form>
 	</div>
-
-	<form:form
-		action="${pageContext.request.contextPath}/editWorker/${worker.id}"
-		method="POST" modelAttribute="worker">
-		<label>Name</label>
-		<br>
-		<form:input path="nameWorker" id="name" />
-		<br>
-		<label>Position</label>
-		<br>
-		<form:input path="position" id="position" />
-		<br>
-		<label>Salary</label>
-		<br>
-		<form:input path="salary" id="salary" />
-		<br>
-		<input name="commit" type="submit" value="Confirm" />
-	</form:form>
-
 </body>
 </html>

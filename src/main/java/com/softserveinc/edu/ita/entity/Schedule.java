@@ -23,11 +23,11 @@ public class Schedule {
 	@Column
 	private String dateTimeSchedule;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
 	@JoinTable(name = "Schedule_Worker", joinColumns = @JoinColumn(name = "Id_Schedule"), inverseJoinColumns = @JoinColumn(name = "Id_Worker"))
 	private List<Worker> worker;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
 	@JoinTable(name = "Excursion_Schedule", joinColumns = @JoinColumn(name = "Id_Schedule"), inverseJoinColumns = @JoinColumn(name = "Id_Excursion"))
 	private List<Excursion> listOfExcursion;
 
@@ -71,5 +71,4 @@ public class Schedule {
 		this.listOfExcursion = listOfExcursion;
 	}
 
-
-	}
+}
