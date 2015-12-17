@@ -16,7 +16,7 @@
 				<label for="name" class="col-sm-2 control-label">Name
 					Showpiece</label>
 				<div class="col-sm-10">
-					<form:input path="nameShowpiece" class="form-control" /> <br>
+					<form:input path="nameShowpiece" class="form-control" />
 				</div>
 			</div>
 			<div class="form-group">
@@ -41,7 +41,7 @@
 			<div class="form-group">
 				<label for="name" class="col-sm-2 control-label">Hall</label>
 				<div class="col-sm-5">
-					<select name="hallId" multiple="multiple" size="5"
+					<select name="hallId" size="5"
 						id="list_Schedules" class="form-control">
 						<option value="0" label="--Select hall--" />
 						<c:forEach items="${halls}" var="hall">
@@ -54,7 +54,7 @@
 			<div class="form-group">
 				<label for="name" class="col-sm-2 control-label">Author</label>
 				<div class="col-sm-5">
-					<select name="authorId" multiple="multiple" size="5"
+					<select name="authorId" size="5"
 						id="list_Schedules" class="form-control">
 						<option value="0" label="--Select hall--" />
 						<c:forEach items="${authors}" var="author">
