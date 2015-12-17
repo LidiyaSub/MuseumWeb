@@ -26,7 +26,7 @@ public class Excursion {
 	@Column
 	private String duration;
 
-	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "Excursion_Schedule", joinColumns = @JoinColumn(name = "Id_Excursion"), inverseJoinColumns = @JoinColumn(name = "Id_Schedule"))
 	private List<Schedule> listOfSchedule;
 

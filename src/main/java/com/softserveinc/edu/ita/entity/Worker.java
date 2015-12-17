@@ -30,7 +30,7 @@ public class Worker {
 	@Column
 	private String position;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "Schedule_Worker", joinColumns = @JoinColumn(name = "Id_Worker"), inverseJoinColumns = @JoinColumn(name = "Id_Schedule"))
 	private List<Schedule> listOfSchedule;
 

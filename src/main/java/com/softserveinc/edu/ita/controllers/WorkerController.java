@@ -32,6 +32,12 @@ public class WorkerController {
 		model.addAttribute("worker", new Worker());
 		return "worker/show-workers";
 	}
+	
+	@RequestMapping(value = "/createWorker", method = RequestMethod.GET)
+	public String createWorker(Model model) {
+		model.addAttribute("worker", new Worker());
+		return "worker/new-worker";
+	}
 
 	@RequestMapping(value = "/saveWorker", method = RequestMethod.POST)
 	public String createWorker(@ModelAttribute("worker") Worker worker) {
@@ -56,7 +62,7 @@ public class WorkerController {
 	@RequestMapping(value = "/editWorker/{id}", method = RequestMethod.POST)
 	public String editWorker(@ModelAttribute("worker") Worker worker) {
 		workerService.updateWorker(worker);
-		return "redirect:/show-workers?edit=true";
+		return "redirect:/showAllWorkers?edit=true";
 	}
 
 	@RequestMapping(value = "/assignWorkerToSchedule", method = RequestMethod.GET)

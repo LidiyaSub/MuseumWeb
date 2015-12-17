@@ -44,15 +44,15 @@
 				<tr>
 					<th>Date and Time</th>
 					<th>Delete</th>
-					<th>Edit</th>
+<!-- 					<th>Edit</th> -->
 				</tr>
 				<c:forEach items="${schedules}" var="schedule1">
 					<tr>
 						<td>${schedule1.dateTimeSchedule}</td>
 						<td><input type="checkbox" name="checkbox"
 							value="${schedule1.id}"></td>
-						<td><a class="btn btn-primary"
-							href="${pageContext.request.contextPath}/editSchedule/${schedule1.id}">Update</a></td>
+<!-- 						<td><a class="btn btn-primary" -->
+<%-- 							href="${pageContext.request.contextPath}/editSchedule/${schedule1.id}">Update</a></td> --%>
 					</tr>
 				</c:forEach>
 

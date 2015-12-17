@@ -27,13 +27,13 @@ public class ScheduleController {
 	@RequestMapping(value = "/createSchedule", method = RequestMethod.GET)
 	public String createSchedule(Model model) {
 		model.addAttribute("schedule", new Schedule());
-		return "schedule/addNewSchedule";
+		return "schedule/new-schedule";
 	}
 
 	@RequestMapping(value = "/saveSchedule", method = RequestMethod.POST)
 	public String saveSchedule(@ModelAttribute("schedule") Schedule schedule) {
 		scheduleService.saveSchedule(schedule);
-		return "redirect:/show-schedules?message=true";
+		return "redirect:/showAllSchedules?message=true";
 	}
 
 	@RequestMapping(value = "/deleteSchedule", method = RequestMethod.GET)
@@ -50,7 +50,7 @@ public class ScheduleController {
 		return "schedule/showSchedulePerUpdate";
 	}
 
-	@RequestMapping(value = "/editSchedule/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "/editSchedule", method = RequestMethod.POST)
 	public String editSchedule(@ModelAttribute("schedule") Schedule schedule) {
 		scheduleService.updateSchedule(schedule);
 		return "redirect:/showAllSchedules?edit=true";

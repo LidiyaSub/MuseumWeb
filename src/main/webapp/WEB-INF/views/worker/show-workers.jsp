@@ -34,7 +34,7 @@
 			</div>
 		</c:if>
 		<h2>
-			<a href="createAuthor" class="btn btn-info">Add Worker</a>
+			<a href="createWorker" class="btn btn-info">Add Worker</a>
 		</h2>
 		<form action="deleteWorker">
 			<table class="table table-hover">
@@ -60,6 +60,7 @@
 		</div>
 		</form>
 
+<<<<<<< HEAD
 		<form:form action="saveWorker" method="POST" modelAttribute="worker">
 			<div class="form-group">
 				<label for="name">Name</label> <br>
@@ -82,6 +83,8 @@
 			
 			</div>
 		</form:form>
+=======
+>>>>>>> 2f7e5301f34bcc48bb74aebe1d1fee9fce700569
 	</div>
 <jsp:include page="../footer.jsp" />
 </body>

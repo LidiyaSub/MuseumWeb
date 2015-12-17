@@ -14,16 +14,12 @@
 				<label for="name" class="col-sm-2 control-label">Name</label>
 				<div class="col-sm-10">
 					<form:input path="nameAuthor" id="name" class="form-control" />
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
 					<input name="commit" type="submit" value="Add"
 						class="btn-lg btn-primary pull-right" />
 				</div>
 			</div>
 		</form:form>
 	</div>
-<jsp:include page="../footer.jsp" />
+	<jsp:include page="../footer.jsp" />
 </body>
 </html>
