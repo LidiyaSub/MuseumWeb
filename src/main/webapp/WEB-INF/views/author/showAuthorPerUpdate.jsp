@@ -17,8 +17,11 @@
 		<form:input path="nameAuthor" id="name" class="form-control" />
 		</div>
 		</div>
+		
 		<input name="commit" type="submit" value="Update" class="btn-lg btn-primary pull-right" />
+	
 	</form:form>
 	</div>
+<jsp:include page="../footer.jsp" />
 </body>
 </html>

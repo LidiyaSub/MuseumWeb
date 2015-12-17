@@ -3,33 +3,43 @@
 <%@ include file="/resources/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Show all halls</title>
-<style type="text/css">
-div {
-	background-color: lightgreen;
-}
-</style>
-
-</head>
+<jsp:include page="../header.jsp" />
 <body>
-
-	<div>
-		<a href="/">Main menu</a>
-	</div>
+<div class="container">
+	
 	<c:if test="${param.message eq true}">
-		<div>Hall is added!</div>
+		<div class="alert alert-success alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" 
+                                aria-label="Close">
+				<span aria-hidden="true">×</span>
+			</button>
+			<strong>Hall added successfully!</strong>
+		</div>
 	</c:if>
 	<c:if test="${param.msg eq true}">
-		<div>Hall is updated!</div>
+	
+		<div class="alert alert-success alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" 
+                                aria-label="Close">
+				<span aria-hidden="true">×</span>
+			</button>
+			<strong>Hall updated successfully!</strong>
+		</div>
 	</c:if>
 	<c:if test="${param.notify eq true}">
-		<div>Hall is deleted!</div>
+		<div class="alert alert-success alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" 
+                                aria-label="Close">
+				<span aria-hidden="true">×</span>
+			</button>
+			<strong>Hall deleted successfully!</strong>
+		</div>
 	</c:if>
-
+<h2>
+		<a href="addHall" class="btn btn-info">Add new HALL</a>
+	</h2>
 	<form action="deleteHall">
-		<table border="1">
+		<table class="table table-hover">
 			<tr>
 				<th>Hall name</th>
 				<th>Responsible for the hall</th>
@@ -43,15 +53,17 @@ div {
 					<td>${hall.worker.nameWorker}</td>
 
 					<td><input type="checkbox" name="checkbox" value="${hall.id}"></td>
-					<td><a href="updateHall-${hall.id}">Update</a></td>
+					<td><a href="updateHall-${hall.id}" class="btn btn-primary">Update</a></td>
 				</tr>
 			</c:forEach>
 
 		</table>
-		<br> <input type="submit" value="delete" id="delete" disabled />
+		<div class="form-group">
+		 <input type="submit" class="btn btn-danger" value="delete" id="delete" disabled />
+	</div>
 	</form>
-	<h2>
-		<a href="addHall">Add new HALL</a>
-	</h2>
+	
+	</div>
+<jsp:include page="../footer.jsp" />
 </body>
 </html>

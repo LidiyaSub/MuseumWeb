@@ -5,7 +5,6 @@
 <html>
 <jsp:include page="../header.jsp" />
 <body>
-
 	<div class="container">
 		<form:form action="${pageContext.request.contextPath}/editSchedule"
 			method="POST" modelAttribute="schedule" class="form-horizontal">
@@ -22,6 +21,6 @@
 			</div>
 		</form:form>
 	</div>
-
+	<jsp:include page="../footer.jsp" />
 </body>
 </html>

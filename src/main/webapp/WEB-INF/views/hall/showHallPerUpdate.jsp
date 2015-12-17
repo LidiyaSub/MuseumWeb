@@ -3,47 +3,47 @@
 <%@ include file="/resources/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Update hall info</title>
-</head>
+<jsp:include page="../header.jsp" />
 <body>
-
-	<div>
-		<a href="/">Main menu</a>
-	</div>
+	<div class="container">
 	<h2>Update hall ${hallInfo.nameHall}</h2>
-	<table border="1">
+
 		<form:form action="saveUpdateHall" method="POST"
-			modelAttribute="hallInfo">
+			modelAttribute="hallInfo" class="form-horizontal">
 			<form:input path="id" type="hidden" value="${hallInfo.id}" />
-			<tr>
-				<th><label for="name">Name</label></th>
-				<th><label for="worker_item">Responsible worker</label></th>
-				
-			</tr>
-			<tr>
-				<td><form:input path="nameHall" id="name" /></td>
-				<td><select name="worker" id="worker_item">
+
+			<div class="form-group">
+				<label for="name" class="col-sm-2 control-label">Name</label>
+				<div class="col-sm-10">
+					<form:input path="nameHall" id="name" class="form-control" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="worker_item" class="col-sm-2 control-label">Responsible
+					worker</label>
+				<div class="col-sm-5">
+					<select name="worker" id="worker_item" class="form-control">
 						<option value="0" label="--Select responsible--" />
 						<c:forEach items="${workerList}" var="workerItem">
 							<option value="${workerItem.id}" label="${workerItem.nameWorker}" />
 						</c:forEach>
-				</select></td>
-				
-			</tr>
-			<tr>
-				<td colspan="3"><input type="submit" value="Update" /></td>
-			</tr>
-			
+					</select>
+				</div>
+				<div class="col-sm-5"></div>
+			</div>
+
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<input type="submit" value="Update"
+						class="btn-lg btn-primary pull-right" />
+				</div>
+			</div>
+
 		</form:form>
-	</table>
-	<form:form action="saveUpdateHall" method="POST"
-		modelAttribute="hallInfo">
-		<form:input path="id" type="hidden" value="${hallInfo.id}" />
-		<label for="name">Name</label>
-		<form:input path="nameHall" id="name" />
-		<input name="commit" type="submit" value="Update" />
-	</form:form>
+
+	</div>
+<jsp:include page="../footer.jsp" />
 </body>
 </html>

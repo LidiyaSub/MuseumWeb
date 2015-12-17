@@ -5,7 +5,6 @@
 <html>
 <jsp:include page="../header.jsp" />
 <body>
-
 	<div class="container">
 
 		<h2>Update ${showpiece.nameShowpiece}</h2>
@@ -68,5 +67,6 @@
 		</form:form>
 
 	</div>
+<jsp:include page="../footer.jsp" />
 </body>
 </html>

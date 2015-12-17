@@ -29,5 +29,6 @@
 				class="btn-lg btn-primary pull-right">
 		</form:form>
 	</div>
+	<jsp:include page="../footer.jsp" />
 </body>
 </html>

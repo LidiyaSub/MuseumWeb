@@ -15,13 +15,14 @@
 				<label for="datepicker" class="col-sm-2 control-label">Date</label>
 				<div class="col-sm-10">
 					<form:input path="dateTimeSchedule" id="datetimepicker"
-						class="form-control"/>
+						class="form-control" />
 				</div>
-					<input name="commit" type="submit" value="Add new schedule"
-						class="btn-lg btn-primary pull-right" />
+				<input name="commit" type="submit" value="Add new schedule"
+					class="btn-lg btn-primary pull-right" />
 			</div>
 		</form:form>
 
 	</div>
+	<jsp:include page="../footer.jsp" />
 </body>
 </html>
