@@ -55,7 +55,9 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<br> <input class="btn btn-danger" type="submit" value="delete" id="delete" disabled />
+			<div class="form-group">
+			 <input class="btn btn-danger" type="submit" value="delete" id="delete" disabled />
+		</div>
 		</form>
 
 		<form:form action="saveWorker" method="POST" modelAttribute="worker">
@@ -74,8 +76,13 @@
 				<form:input path="salary" id="salary" />
 				<br>
 			</div>
-			<input type="submit" name="commit" value="Add worker" />
+			<div class="form-group">
+				
+			<input type="submit" name="commit" value="Add worker" class="btn btn-primary" />
+			
+			</div>
 		</form:form>
 	</div>
+<jsp:include page="../footer.jsp" />
 </body>
 </html>

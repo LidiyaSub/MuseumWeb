@@ -3,42 +3,40 @@
 <%@ include file="/resources/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Add new Hall</title>
-</head>
+<jsp:include page="../header.jsp" />
 <body>
+<div class="container">
+	
 
-	<div>
-		<a href="/">Main menu</a>
+	<form:form action="saveHall" method="POST" class="form-horizontal">
+	<div class="form-group">
+		<label for="name_Hall" class="col-sm-2 control-label">Hall name</label>
+		<div class="col-sm-10">
+		<input name="nameHall" id="name_Hall" class="form-control"/>
+		</div>
 	</div>
-<table border="1">
-	<form:form action="saveHall" method="POST" >
-	<tr>
-		<th><label for="name_Hall">Hall name</label></th>
-		<th><label for="worker_item">Responsible worker</label></th>
-		
-	</tr>
-	<tr>
-		<td>
-		<input name="nameHall" id="name_Hall" />
-		</td>
-		<td>
-		<select name="worker" id="worker_item">
+	<div class="form-group">	
+		<label for="worker_item" class="col-sm-2 control-label">Responsible worker</label>
+		<div class="col-sm-5">
+		<select name="worker" id="worker_item" class="form-control">
 			<option value="0" label="--Select responsible--" />
 			<c:forEach items="${workers}" var="workerItem">
 				<option value="${workerItem.id}" label="${workerItem.nameWorker}" />
 			</c:forEach>
 		</select>
-		</td>
-		
-	</tr>
-	<tr>
-		<td colspan="3">
-		<input type="submit" value="Add" />
-		</td>
-	</tr>
+		</div>
+		<div class="col-sm-5">
+		</div>
+	</div>	
+	
+	<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+		<input type="submit" value="Add" class="btn-lg btn-primary pull-right"/>
+		</div>
+		</div>
 	</form:form>
-	</table>
+	
+</div>
+<jsp:include page="../footer.jsp" />
 </body>
 </html>

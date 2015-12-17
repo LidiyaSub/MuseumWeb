@@ -12,6 +12,6 @@
 	<div>
 		<a href="/">Main menu</a>
 	</div>
-
+<jsp:include page="../footer.jsp" />
 </body>
 </html>

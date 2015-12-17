@@ -57,10 +57,13 @@
 				</c:forEach>
 
 			</table>
-			<br> <input class="btn btn-danger" type="submit" value="delete"
+			<div class="form-group">
+			 <input class="btn btn-danger" type="submit" value="delete"
 				id="delete" disabled />
+				</div>
 		</form>
 		<br>
 	</div>
+<jsp:include page="../footer.jsp" />
 </body>
 </html>

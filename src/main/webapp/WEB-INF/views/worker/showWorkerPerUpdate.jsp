@@ -30,6 +30,6 @@
 		<br>
 		<input name="commit" type="submit" value="Confirm" />
 	</form:form>
-
+<jsp:include page="../footer.jsp" />
 </body>
 </html>
