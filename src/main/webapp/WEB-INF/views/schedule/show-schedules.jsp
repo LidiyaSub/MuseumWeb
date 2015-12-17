@@ -4,58 +4,63 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<title>Schedule</title>
-</head>
+<jsp:include page="../header.jsp" />
 <body>
-	<div>
-		<a href="/">Main menu</a>
-	</div>
+	<div class="container">
+		<c:if test="${param.message eq true}">
+			<div class="alert alert-success alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<strong>Schedule is added!</strong>
+			</div>
+		</c:if>
+		<c:if test="${param.delete eq true}">
+			<div class="alert alert-success alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<strong>Schedule is deleted!</strong>
+			</div>
+		</c:if>
+		<c:if test="${param.edit eq true}">
+			<div class="alert alert-success alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<strong>Schedule is edited!</strong>
+			</div>
+		</c:if>
 
-	<c:if test="${param.message eq true}">
-		<div>Schedule is added!</div>
-	</c:if>
-	<c:if test="${param.delete eq true}">
-		<div>Schedule is deleted!</div>
-	</c:if>
-	<c:if test="${param.edit eq true}">
-		<div>Schedule is edited!</div>
-	</c:if>
+		<h2>
+			<a href="createSchedule" class="btn btn-info">Add Schedule</a>
+		</h2>
 
-	<h1>Schedule</h1>
-
-	<form action="deleteSchedule">
-		<table border="1">
-			<tr>
-				<th>Date and Time</th>
-				<th>Delete</th>
-				<th>Edit</th>
-			</tr>
-			<c:forEach items="${schedules}" var="schedule1">
+		<form action="deleteSchedule">
+			<table class="table table-hover">
 				<tr>
-					<td>${schedule1.dateTimeSchedule}</td>
-					<td><input type="checkbox" name="checkbox"
-						value="${schedule1.id}"></td>
-					<td><a
-						href="${pageContext.request.contextPath}/editSchedule/${schedule1.id}">edit</a></td>
+					<th>Date and Time</th>
+					<th>Delete</th>
+					<th>Edit</th>
 				</tr>
-			</c:forEach>
+				<c:forEach items="${schedules}" var="schedule1">
+					<tr>
+						<td>${schedule1.dateTimeSchedule}</td>
+						<td><input type="checkbox" name="checkbox"
+							value="${schedule1.id}"></td>
+						<td><a class="btn btn-primary"
+							href="${pageContext.request.contextPath}/editSchedule/${schedule1.id}">Update</a></td>
+					</tr>
+				</c:forEach>
 
-		</table>
-		<br> <input type="submit" value="delete" id="delete" disabled />
-	</form>
-	<br>
-
-	<form:form action="saveSchedule" method="POST"
-		modelAttribute="schedule">
-		<label>Date</label>
+			</table>
+			<br> <input class="btn btn-danger" type="submit" value="delete"
+				id="delete" disabled />
+		</form>
 		<br>
-		<form:input path="dateTimeSchedule" id="datepicker" />
-		<input name="commit" type="submit" value="Add new schedule" />
-	</form:form>
-
+	</div>
 </body>
 </html>

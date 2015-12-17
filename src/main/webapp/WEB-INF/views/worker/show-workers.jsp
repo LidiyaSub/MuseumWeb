@@ -3,74 +3,79 @@
 <%@ include file="/resources/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Workers</title>
-
-
-<style type="text/css">
-div {
-	background-color: lightgreen;
-}
-</style>
-
-</head>
+<jsp:include page="../header.jsp" />
 <body>
-
-	<div>
-		<a href="/">Main menu</a>
-	</div>
-
-	<c:if test="${param.message eq true}">
-		<div>Worker is added!</div>
-	</c:if>
-	<c:if test="${param.delete eq true}">
-		<div>Worker is deleted!</div>
-	</c:if>
-	<c:if test="${param.edit eq true}">
-		<div>Worker is edited!</div>
-	</c:if>
-
-	<h1>Worker</h1>
-	<form action="deleteWorker">
-		<table border="1">
-			<tr>
-				<th>Name</th>
-				<th>Position</th>
-				<th>Salary</th>
-			</tr>
-			<c:forEach items="${workers}" var="worker">
+	<div class="container">
+		<c:if test="${param.message eq true}">
+			<div class="alert alert-success alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<strong>Worker is added!</strong>
+			</div>
+		</c:if>
+		<c:if test="${param.delete eq true}">
+			<div class="alert alert-success alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<strong>Worker is deleted!</strong>
+			</div>
+		</c:if>
+		<c:if test="${param.edit eq true}">
+			<div class="alert alert-success alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<strong>Worker is edited!</strong>
+			</div>
+		</c:if>
+		<h2>
+			<a href="createAuthor" class="btn btn-info">Add Worker</a>
+		</h2>
+		<form action="deleteWorker">
+			<table class="table table-hover">
 				<tr>
-					<td>${worker.nameWorker}</td>
-					<td>${worker.position}</td>
-					<td>${worker.salary}</td>
-					<td><input type="checkbox" name="checkbox"
-						value="${worker.id}"></td>
-					<td><a
-						href="${pageContext.request.contextPath}/editWorker/${worker.id}">edit</a></td>
+					<th>Name</th>
+					<th>Position</th>
+					<th>Salary</th>
 				</tr>
-			</c:forEach>
-		</table>
-		<br> <input type="submit" value="delete" id="delete" disabled />
-	</form>
-	<br>
-	<br>
+				<c:forEach items="${workers}" var="worker">
+					<tr>
+						<td>${worker.nameWorker}</td>
+						<td>${worker.position}</td>
+						<td>${worker.salary}</td>
+						<td><input type="checkbox" name="checkbox"
+							value="${worker.id}"></td>
+						<td><a class="btn btn-primary"
+							href="${pageContext.request.contextPath}/editWorker/${worker.id}">Update</a></td>
+					</tr>
+				</c:forEach>
+			</table>
+			<br> <input class="btn btn-danger" type="submit" value="delete" id="delete" disabled />
+		</form>
 
-	<form:form action="saveWorker" method="POST" modelAttribute="worker">
-		<label for="name">Name</label>
-		<br>
-		<form:input path="nameWorker" id="name" />
-		<br>
-		<label for="name">Position</label>
-		<br>
-		<form:input path="position" id="position" />
-		<br>
-		<label for="name">Salary</label>
-		<br>
-		<form:input path="salary" id="salary" />
-		<br>
-		<input type="submit" name="commit" value="Add worker" />
-	</form:form>
-
+		<form:form action="saveWorker" method="POST" modelAttribute="worker">
+			<div class="form-group">
+				<label for="name">Name</label> <br>
+				<form:input path="nameWorker" id="name" />
+				<br>
+			</div>
+			<div class="form-group">
+				<label for="name">Position</label> <br>
+				<form:input path="position" id="position" />
+				<br>
+			</div>
+			<div class="form-group">
+				<label for="name">Salary</label> <br>
+				<form:input path="salary" id="salary" />
+				<br>
+			</div>
+			<input type="submit" name="commit" value="Add worker" />
+		</form:form>
+	</div>
 </body>
 </html>

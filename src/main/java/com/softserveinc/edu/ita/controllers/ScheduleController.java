@@ -1,9 +1,5 @@
 package com.softserveinc.edu.ita.controllers;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,36 +18,42 @@ public class ScheduleController {
 	@Autowired
 	private ScheduleService scheduleService;
 
-	@RequestMapping("/showAllSchedules")
+	@RequestMapping(value = "/showAllSchedules", method = RequestMethod.GET)
 	public String showAllSchedules(Model model) {
 		model.addAttribute("schedules", scheduleService.getAllSchedules());
-		model.addAttribute("schedule", new Schedule());
 		return "schedule/show-schedules";
 	}
 
+	@RequestMapping(value = "/createSchedule", method = RequestMethod.GET)
+	public String createSchedule(Model model) {
+		model.addAttribute("schedule", new Schedule());
+		return "schedule/addNewSchedule";
+	}
+
 	@RequestMapping(value = "/saveSchedule", method = RequestMethod.POST)
-	public String saveSchedule(@ModelAttribute ("schedule") Schedule schedule) {
+	public String saveSchedule(@ModelAttribute("schedule") Schedule schedule) {
 		scheduleService.saveSchedule(schedule);
 		return "redirect:/show-schedules?message=true";
 	}
-	
-	@RequestMapping("/deleteSchedule")
-	public String deleteSchedule(@RequestParam("checkbox") Long [] id) {
+
+	@RequestMapping(value = "/deleteSchedule", method = RequestMethod.GET)
+	public String deleteSchedule(@RequestParam("checkbox") Long[] id) {
 		for (Long long1 : id) {
 			scheduleService.deleteSchedule(long1);
 		}
 		return "redirect:/showAllSchedules?delete=true";
 	}
 
-	@RequestMapping("/editSchedule/{id}")
+	@RequestMapping(value = "/editSchedule/{id}", method = RequestMethod.GET)
 	public String editSchedule(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("schedule", scheduleService.findOneById(id));
 		return "schedule/showSchedulePerUpdate";
 	}
-	
+
 	@RequestMapping(value = "/editSchedule/{id}", method = RequestMethod.POST)
 	public String editSchedule(@ModelAttribute("schedule") Schedule schedule) {
 		scheduleService.updateSchedule(schedule);
 		return "redirect:/showAllSchedules?edit=true";
 	}
+
 }
